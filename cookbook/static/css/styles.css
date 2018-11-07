@@ -1,0 +1,110 @@
+  html {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  
+  h1, h2, h3 {
+    font-weight: 500;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+  }
+  
+  h2 {
+    font-size: 2.9rem;
+  }
+  
+  h3 {
+    font-size: 2.28rem;
+  }
+  
+  h4 {
+    font-size: 1.2rem;
+  }
+  
+  a {
+    font-weight: 600;
+  }
+  
+
+  
+  .slider .slides li {
+    background-color: #000;
+  }
+  
+  .slider .slides li img {
+    opacity: 0.6;
+  }
+  
+  .slider .fixed-item {
+    position: absolute;
+    color: #fff;
+    z-index:10;
+    width: 100vw;
+    text-shadow: 1px 1px 2px #333;
+  }
+  
+  .slider .fixed-item a{
+    text-shadow: none;
+  }
+  
+  .slider .fixed-item a:hover, .slider .fixed-item a:focus{
+    filter: brightness(80%);
+  }
+  
+  
+  /* HOME */
+  .home-hero .slider, .home-hero .slides {
+    height: 600px!important;
+  }
+  
+  .home-hero h1 {
+    margin-top: 0;
+    padding-top: 150px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .home-hero a {
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+  }
+  
+  
+  .top-recipes {
+    margin-top: 48px;
+  }
+  
+  .box {
+    position: relative;
+    height: 300px;
+    border-radius: 10px;
+  }
+  
+  .box h4 {
+    padding: 16px 50px 16px 14px;
+    line-height: 26px;
+  }
+  
+  .box .mitt {
+    position: absolute;
+    top: 17px;
+    right: 21px;
+  }
+  
+  .box .mitt img {
+    height: 20px;
+    width: auto;
+  }
+ 
+  

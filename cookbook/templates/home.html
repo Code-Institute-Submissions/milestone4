@@ -1,5 +1,74 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>index</h1>
+<section class="home-hero">
+  <div class="slider">
+    <div class="fixed-item">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 center">
+            <h1>FiCoEa</h1>
+            <h2>Find It, Cook It, Eat It</h2>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s12 center">
+            <div class="col s12 m6 l6 xl4 offset-xl2">
+              <a class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4"><i class="material-icons left">search</i>Find A Recipe</a>
+            </div>
+            
+            
+            <div class="col s12 m6 l6 xl4">
+              <a class="btn-large waves-effect green accent-2 blue-grey-text text-darken-4"><i class="material-icons left">add</i>Add A Recipe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="slides">
+      <li>
+        <img src="{{ url_for('static', filename='img/food-3.jpg')}}">
+      </li>
+      <li>
+        <img src="{{ url_for('static', filename='img/food-2.jpg')}}">
+      </li>
+      <li>
+        <img src="{{ url_for('static', filename='img/food-1.jpg')}}">
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="top-recipes">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 l6">
+        <h3>Check Out Our Top Recipes</h3>
+        <p>As Voted By Our Users, if you like a recipe don't forget to +1 that Golden Oven Mitt</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col s12 m6 l4">
+        <div class="box z-depth-3">
+          <h4>Recipe Title<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt.png') }}"></i> 20</span></h4>
+        </div>
+      </div>
+      
+      <div class="col s12 m6 l4">
+        <div class="box z-depth-3">
+          <h4>Recipe Title</h4>
+        </div>
+      </div>
+      
+      <div class="col s12 m6 l4">
+        <div class="box z-depth-3">
+          <h4>Recipe Title</h4>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
 
 {% endblock %}
