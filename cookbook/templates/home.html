@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
-<section class="home-hero">
-  <div class="slider">
+<section class="hero">
+  <div class="slider home-slider">
     <div class="fixed-item">
       <div class="container">
         <div class="row">
@@ -130,6 +130,16 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center-align">
+        <a href="{{ url_for('recipes') }}" class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4">View All Recipes</a>
+      </div>
     </div>
   </div>
 </section>
