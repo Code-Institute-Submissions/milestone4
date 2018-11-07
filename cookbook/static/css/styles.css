@@ -1,7 +1,9 @@
   html {
     font-family: 'Montserrat', sans-serif;
+    color: #424242;
+    font-size: 16px;
   }
-  
+
   body {
     display: flex;
     min-height: 100vh;
@@ -11,100 +13,158 @@
   main {
     flex: 1 0 auto;
   }
-  
-  h1, h2, h3 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     font-weight: 500;
   }
-  
+
   h1 {
     font-size: 3.5rem;
   }
-  
+
   h2 {
     font-size: 2.9rem;
   }
-  
+
   h3 {
     font-size: 2.28rem;
   }
-  
+
   h4 {
     font-size: 1.2rem;
   }
-  
+
+
   a {
     font-weight: 600;
   }
-  
 
-  
+  .btn:hover,
+  .btn:focus,
+  .btn-large:hover,
+  .btn-large:focus {
+    filter: brightness(80%);
+  }
+
+
+
   .slider .slides li {
     background-color: #000;
   }
-  
+
   .slider .slides li img {
     opacity: 0.6;
   }
-  
+
   .slider .fixed-item {
     position: absolute;
     color: #fff;
-    z-index:10;
+    z-index: 10;
     width: 100vw;
     text-shadow: 1px 1px 2px #333;
   }
-  
-  .slider .fixed-item a{
+
+  .slider .fixed-item a {
     text-shadow: none;
   }
-  
-  .slider .fixed-item a:hover, .slider .fixed-item a:focus{
-    filter: brightness(80%);
-  }
-  
-  
+
+
+
+
   /* HOME */
-  .home-hero .slider, .home-hero .slides {
+
+  .home-hero .slider,
+  .home-hero .slides {
     height: 600px!important;
   }
-  
+
   .home-hero h1 {
     margin-top: 0;
     padding-top: 150px;
   }
-  
+
   @media screen and (max-width: 600px) {
     .home-hero a {
       display: inline-block;
       margin-bottom: 16px;
     }
   }
-  
-  
+
+
   .top-recipes {
-    margin-top: 48px;
+    margin: 48px 0 72px;
   }
-  
+
   .box {
     position: relative;
-    height: 300px;
+
     border-radius: 10px;
   }
-  
-  .box h4 {
-    padding: 16px 50px 16px 14px;
-    line-height: 26px;
+
+  .box .title {
+    border-radius: 10px 10px 0 0;
   }
-  
+
+  .box h4 {
+    padding: 20px 80px 20px 14px;
+    line-height: 26px;
+    margin: 0;
+  }
+
   .box .mitt {
     position: absolute;
-    top: 17px;
-    right: 21px;
+    top: 8px;
+    right: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding-top: 12px;
+    padding-left: 6px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   }
-  
+
   .box .mitt img {
     height: 20px;
     width: auto;
   }
- 
+
+  .box .info {
+    margin-top: 12px;
+    justify-content: space-around;
+  }
+
+  .box .info i,
+  .box .info span {
+    display: inline-block;
+  }
+
+  .box .description {
+    padding: 0 20px 20px 20px;
+    text-align: center;
+  }
+  
+  .box .description .heat {
+    text-align: left;
+  }
+  
+  .box .description .desc-body {
+    text-align: left;
+    margin: 20px 0 30px;
+  }
+  
+  .box .description hr {
+    border: none;
+    border-bottom: solid 1px #eee;
+  }
+  
+  .box .bottom p {
+    font-weight: 500;
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+  }
+  
   
