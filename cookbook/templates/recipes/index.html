@@ -1,7 +1,37 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Recipes Index</h1>
+<section class="hero">
+  <div class="slider inner-slider">
+    <div class="fixed-item">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 center">
+            {% if "edit" in request.path %}
+            {% set bar = "view" %}
+            <h1>Edit Recipe</h1>
+            {% elif "add" in request.path %}
+            {% set bar = "view" %}
+            <h1>Add A Recipe</h1>
+            {% else %}
+            {% set bar = "add" %}
+            <h1>Recipes</h1>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="slides">
+      <li>
+        <img src="{{ url_for('static', filename='img/food-3.jpg')}}">
+      </li>
+    </ul>
+  </div>
+</section>
 
-{% block innerContent %}{% endblock %}
+{% if bar == "add" %}
+{% include "_includes/add-bar.html" %}
+{% else %}
+{% include "_includes/view-bar.html" %}
+{% endif %}
 
-{% endblock %}
+{% block innerContent %}{% endblock %} {% endblock %}
