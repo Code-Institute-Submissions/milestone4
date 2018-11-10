@@ -1,0 +1,126 @@
+<!-- SEARCH MODAL -->
+<div id="search-modal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <div class="container">
+
+      <div class="row">
+        <div class="col s12">
+          <h4>Search</h4>
+          <p class="search-info">Use the search box and filters to find a meal to suit your needs</p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <form action="" method="POST" class="col s12">
+          <div class="row">
+            <div class="col s12 m6 l4 input-field">
+              <input id="search_word" name="search_word" type="text" class="validate">
+              <label for="search_word">Search Recipes</label>
+            </div>
+
+            <div class="col s12 m6 l4 input-field">
+              <select id="serves" name="serves" class="validate">
+                <option value=""  selected>Select Number</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="sixPlu">6 +</option>
+              </select>
+              <label for="serves">Serves</label>
+            </div>
+
+            <div class="col s12 m6 l4 input-field">
+              <select id="cook_time" name="cook_time">
+                <option value=""  selected>Select Time</option>
+                <option value="lessOne">< 1hr</option>
+                <option value="lessTwo">< 2hr</option>
+                <option value="lessThree">< 3hr</option>
+                <option value="threePlus">3hr +</option>
+              </select>
+              <label for="cook_time">Cook Time</label>
+            </div>
+
+            <div class="col s12 m6 l4 input-field">
+              <select id="main_ingredient" name="main_ingredient">
+                <option value=""  selected>Select Ingredient</option>
+                <option value="chicken">Chicken</option>
+                <option value="beef">Beef</option>
+                <option value="fish">Fish</option>
+                <option value="pork">Pork</option>
+                <option value="lamb">Lamb</option>
+                <option value="veal">Veal</option>
+              </select>
+              <label for="main_ingredient">Main Ingredient</label>
+            </div>
+
+            <div class="col s12 m6 l4">
+              <p class="additional-label">Does Not Contain:</p>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen1" >
+                  <input type="checkbox" id="allergen1" name="allergen1" />
+                  <span>Nuts</span>
+                  </label>
+                </p>
+              </div>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen2">
+                  <input type="checkbox" id="allergen2" name="allergen2" />
+                  <span>Nuts</span>
+                </label>
+                </p>
+              </div>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen3">
+                  <input type="checkbox" id="allergen3" name="allergen3" />
+                  <span>Nuts</span>
+                </label>
+                </p>
+              </div>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen4">
+                  <input type="checkbox" id="allergen4" name="allergen4" />
+                  <span>Nuts</span>
+               </label>
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="col s12 m6 l4">
+              <!-- Switch -->
+              <div class="switch">
+                <label>
+                  <p class="additional-label">Vegan Friendly</p>
+                  <input type="checkbox" name="vegan" id="vegan">
+                  <span class="lever"></span>
+                </label for="vegan">
+              </div>
+            </div>
+          </div>
+          
+          <br>
+          <br>
+          
+          <div class="row">
+            <div class="col s12 center-align">
+              <a href="" class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4 modal-trigger">View Results</a>
+              
+              <a href="#!" class="btn-large modal-close waves-effect  btn-flat">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

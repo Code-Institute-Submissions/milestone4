@@ -1,5 +1,116 @@
 {% extends 'recipes/index.html' %} {% block innerContent %}
 
-<h2>Results</h2>
+<section class="search-btn">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <a href="#search-modal" class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4 modal-trigger"><i class="material-icons left">search</i>Search</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="recipe-results">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m3 offset-m9">
+        <select>
+          <option value="" disabled selected>Sort By:</option>
+          <option value="1">A - Z</option>
+          <option value="2">Most Popular</option>
+          <option value="3">Shortest Cook Time</option>
+        </select>
+      </div>
+    </div>
+    
+    
+    <br>
+    <br>
+    
+    <div class="row">
+      <div class="col s12 m6 l4">
+        <div class="box z-depth-3">
+
+          <div class="title valign-wrapper amber accent-2">
+            <h4>Recipe Title<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</span></h4>
+          </div>
+
+          <div class="info valign-wrapper center-align">
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>50min</span></span>
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br>50min</span></span>
+            <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>4</span></span>
+          </div>
+
+          <div class="description">
+            <hr>
+            <p class="heat orange-text text-darken-4">Heat Rating - <span class="flame"><i class="fas fa-fire"></i> <i class="fas fa-fire"></i> <i class="fas fa-fire"></i></span></p>
+            <hr>
+            <p class="desc-body">Spicy jalapeno porchetta bresaola brisket beef ribs chicken pork loin. Exercitation turkey pancetta picanha. Velit t-bone ham cow pork belly.</p>
+            <a class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
+          </div>
+
+          <div class="bottom">
+            <p class="allergen center-align red darken-1 white-text">! Contains Allergens !</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l4">
+        <div class="box z-depth-3">
+
+          <div class="title valign-wrapper amber accent-2">
+            <h4>Recipe Title<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</span></h4>
+          </div>
+
+          <div class="info valign-wrapper center-align">
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>50min</span></span>
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br>50min</span></span>
+            <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>4</span></span>
+          </div>
+
+          <div class="description">
+            <hr>
+            <p class="heat orange-text text-darken-4">Heat Rating - <span class="flame"><i class="fas fa-fire"></i> <i class="fas fa-fire"></i> <i class="fas fa-fire"></i></span></p>
+            <hr>
+            <p class="desc-body">Spicy jalapeno porchetta bresaola brisket beef ribs chicken pork loin. Exercitation turkey pancetta picanha. Velit t-bone ham cow pork belly.</p>
+            <a class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
+          </div>
+
+          <div class="bottom">
+            <p class="allergen center-align green darken-1 white-text">No Allergens</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l4">
+        <div class="box z-depth-3">
+
+          <div class="title valign-wrapper amber accent-2">
+            <h4>Recipe Title<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</span></h4>
+          </div>
+
+          <div class="info valign-wrapper center-align">
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>50min</span></span>
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br>50min</span></span>
+            <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>4</span></span>
+          </div>
+
+          <div class="description">
+            <hr>
+            <p class="heat orange-text text-darken-4">Heat Rating - <span class="flame"><i class="fas fa-fire"></i> <i class="fas fa-fire"></i> <i class="fas fa-fire"></i></span></p>
+            <hr>
+            <p class="desc-body">Spicy jalapeno porchetta bresaola brisket beef ribs chicken pork loin. Exercitation turkey pancetta picanha. Velit t-bone ham cow pork belly.</p>
+            <a class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
+          </div>
+
+          <div class="bottom">
+            <p class="allergen center-align red darken-1 white-text">! Contains Allergens !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

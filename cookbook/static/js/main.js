@@ -1,5 +1,8 @@
   $(document).ready(function() {
-    $('.sidenav').sidenav();
+    $('.sidenav').sidenav({
+      draggable: true,
+      preventScrolling: true,
+    });
 
     $('.slider.home-slider').slider({
       indicators: false,
@@ -10,5 +13,9 @@
       indicators: false,
       height: 300,
     });
+    
+    $('select').formSelect();
+    
+    $('.modal').modal();
   });
   
