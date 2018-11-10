@@ -40,7 +40,7 @@
   }
 
 
-  a {
+  a, button {
     font-weight: 600;
   }
 
@@ -93,12 +93,19 @@
   
   /*text input*/
   input[type=text]:not(.browser-default):focus:not([readonly]),
-  input.valid[type=text]:not(.browser-default) {
+  input.valid[type=text]:not(.browser-default),
+  input[type=number]:not(.browser-default):focus:not([readonly]),
+  input.valid[type=number]:not(.browser-default),
+  textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus,
+  textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: solid 1px #0288d1;
     box-shadow: 0 1px 0 0 #0288d1;
   }
   
-  input[type=text]:not(.browser-default):focus:not([readonly])+label {
+  input[type=text]:not(.browser-default):focus:not([readonly])+label,
+  input[type=number]:not(.browser-default):focus:not([readonly])+label,
+  textarea.materialize-textarea:focus.valid ~ label,
+  textarea.materialize-textarea:focus:not([readonly])+label{
     color: #0288d1;
   }
   
@@ -298,4 +305,10 @@
   /*Results Section*/
   .recipe-results {
     margin-bottom: 72px;
+  }
+  
+  
+  /*ADD RECIPE PAGE*/
+  .add-edit-form {
+    margin-top: 56px;
   }

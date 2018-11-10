@@ -17,5 +17,7 @@
     $('select').formSelect();
     
     $('.modal').modal();
+    
+    $('input#recipe_title').characterCounter();
   });
   

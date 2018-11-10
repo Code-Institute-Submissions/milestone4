@@ -1,5 +1,154 @@
 {% extends 'recipes/index.html' %} {% block innerContent %}
+<section class="add-edit-form">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 l4">
+        <form action="" method="POST" class="col s12">
+          <div class="row">
+            <div class="col s12 input-field">
+              <input id="username" name="username" type="text" class="validate" required>
+              <label for="username">Username*</label>
+              <span class="helper-text" data-error="Username Required" data-success="">Required</span>
+            </div>
 
-<h2>Add Recipe</h2>
+            <div class="col s12 input-field">
+              <input id="recipe_title" name="recipe_title" type="text" class="validate" data-length="70" required>
+              <label for="recipe_title">Recipe Title*</label>
+              <span class="helper-text" data-error="Recipe Title Required" data-success=""></span>
+            </div>
 
+            <div class="input-field col s12">
+              <textarea id="recipe_description" name="recipe_description" class="materialize-textarea validate" required></textarea>
+              <label for="recipe_description">Description*</label>
+              <span class="helper-text" data-error="Description Required" data-success=""></span>
+            </div>
+
+            <div class="col s12 input-field">
+              <input id="people_serves" name="people_serves" type="number" class="validate" required>
+              <label for="people_serves">Dish Serves* <small>(Number)</small></label>
+              <span class="helper-text" data-error="Please tell us how many people the dish will serve" data-success=""></span>
+            </div>
+
+            <div class="col s6 input-field">
+              <input id="prep_time_hr" name="prep_time_hr" type="number" class="validate" required value="0">
+              <label for="prep_time_hr">Prep Time <small>(hr)</small></label>
+            </div>
+
+            <div class="col s6 input-field">
+              <input id="prep_time_min" name="prep_time_min" type="number" class="validate" required value="0">
+              <label for="prep_time_min">Prep Time <small>(min)</small></label>
+            </div>
+
+            <div class="col s6 input-field">
+              <input id="cook_time_hr" name="cook_time_hr" type="number" class="validate" required value="0">
+              <label for="cook_time_hr">Cook Time <small>(hr)</small></label>
+            </div>
+
+            <div class="col s6 input-field">
+              <input id="cook_time_min" name="cook_time_min" type="number" class="validate" required value="0">
+              <label for="cook_time_min">Cook Time <small>(min)</small></label>
+            </div>
+
+            <div class="input-field col s12">
+              <textarea id="ingredients" name="ingredients" class="materialize-textarea validate" required></textarea>
+              <label for="ingredients">Ingredients*</label>
+              <span class="helper-text" data-error="Please Enter Ingredients" data-success="">Enter Ingredients and Quantities</span>
+            </div>
+
+            <div class="input-field col s12">
+              <textarea id="method" name="method" class="materialize-textarea validate" required></textarea>
+              <label for="method">Method*</label>
+              <span class="helper-text" data-error="Please Enter method" data-success=""></span>
+            </div>
+
+            <div class="col s12 input-field">
+              <select id="heat_rating" name="heat_rating">
+                <option value="1"  selected>1 - Very Mild</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 - Extremely Hot</option>
+              </select>
+              <label for="heat_rating">Heat Rating</label>
+            </div>
+
+            <div class="col s12 input-field">
+              <input id="main_ingredient" name="main_ingredient" type="text" class="validate" required>
+              <label for="main_ingredient">Main Ingredient*</label>
+              <span class="helper-text" data-error="Main Ingredient Required" data-success=""></span>
+            </div>
+
+            <div class="col s12">
+              <p class="additional-label">Contains Allergens:</p>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen1">
+                  <input type="checkbox" id="allergen1" name="allergen1" />
+                  <span>Nuts</span>
+                  </label>
+                </p>
+              </div>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen2">
+                  <input type="checkbox" id="allergen2" name="allergen2" />
+                  <span>Nuts</span>
+                </label>
+                </p>
+              </div>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen3">
+                  <input type="checkbox" id="allergen3" name="allergen3" />
+                  <span>Nuts</span>
+                </label>
+                </p>
+              </div>
+
+              <div class="col sm6">
+                <p>
+                  <label for="allergen4">
+                  <input type="checkbox" id="allergen4" name="allergen4" />
+                  <span>Nuts</span>
+               </label>
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="col s12 input-field">
+              <input id="other_allergens" name="other_allergens" type="text" class="validate">
+              <label for="other_allergens">Other Allergens</label>
+            </div>
+
+
+            <div class="col s12">
+              <!-- Switch -->
+              <div class="switch">
+                <label>
+                  <p class="additional-label">Vegan Friendly</p>
+                  <input type="checkbox" name="vegan" id="vegan">
+                  <span class="lever"></span>
+                </label for="vegan">
+              </div>
+            </div>
+          </div>
+          
+          <br>
+          <br>
+          
+          <div class="row">
+            <div class="col s12 center-align">
+              <button class="btn-large waves-effect green accent-2 blue-grey-text text-darken-4" type="submit" name="action">Add Recipe</button>
+            </div>
+          </div>
+        </form>
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
 {% endblock %}
