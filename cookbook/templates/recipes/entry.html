@@ -1,5 +1,111 @@
 {% extends 'recipes/index.html' %} {% block innerContent %}
 
-<h2>Recipe Entry</h2>
+<section class="recipe">
+  <div class="row flex recipe-wrapper">
+
+    <div class="col s12 m5 l4 xl3 side-bar grey lighten-5">
+      <div class="vegan-bar center-align green lighten-3">
+        <h4><span><i class="fas fa-leaf"></i></span>&nbsp;&nbsp;Suitable For Vegans</h4>
+      </div>
+      
+      <div class="col s12 center-align">
+        <p class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</p>
+      </div>
+
+      <div class="col s12">
+        <ul class="side-info">
+          <li><span class="icon"><i class="fas fa-user fa-fw"></i></span> <strong>Submitted By: </strong> Philsurgenor87</li>
+          <li><span class="icon"><i class="far fa-check-square fa-fw"></i></span> <strong>Main Ingredient: </strong> Chicken</li>
+          <li><span class="icon"><i class="fas fa-fire fa-fw"></i></span> <strong>Heat Rating: </strong> jhghg</li>
+        </ul>
+      </div>
+
+      <div class="col s12">
+        <ul class="side-info">
+          <li><span class="icon"><i class="fas fa-users fa-fw"></i></span> <strong>Serves: </strong> 4</li>
+          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Prep Time: </strong> 15min</li>
+          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Cook Time: </strong> 50min</li>
+        </ul>
+      </div>
+
+      <div class="col s12 center-align allergen-info red lighten-3">
+        <p><span><i class="fas fa-exclamation-triangle fa-fw"></i></span> <strong>Allergens</strong> <span><i class="fas fa-exclamation-triangle fa-fw"></i></span></p>
+
+        <ul class="allergens">
+          <li>Nuts</li>
+          <li>Milk</li>
+          <li>Gluten ddj</li>
+          <li>Gluten dd df</li>
+          <li>Gluten d</li>
+          <li>Gluten</li>
+        </ul>
+      </div>
+
+      <div class="hide-on-small-only">
+        <div class="col s12 center-align like-box light-blue lighten-3">
+          <h4>Like What You See?</h4>
+          <p>Give this recipe the Golden Oven Mitt Seal Of Approval</p>
+          <a href="" class="btn-large waves-effect amber accent-4 blue-grey-text text-darken-4 modal-trigger"><img src="{{ url_for('static', filename='img/mitt.png') }}"> +1</a>
+        </div>
+
+        <div class="col s12 edit-link">
+          <p>Found A Mistake? <a href="{{ url_for('edit_recipe') }}">Edit Recipe</a></p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col s12 m7 l8 xl9 recipe-content">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h2>Recipe Title</h2>
+          </div>
+
+          <div class="col s12 recipe-content-description">
+            <h3>Description</h3>
+
+            <p>Pastrami tenderloin tri-tip in, nisi jowl eiusmod corned beef ground round sed landjaeger commodo. Proident pork loin bresaola labore. Ea bresaola ribeye rump tempor doner dolore pork chop reprehenderit frankfurter. Picanha bresaola spare
+              ribs chuck burgdoggen, in leberkas voluptate esse prosciutto. Ground round beef ribs pork belly ham hock chuck, consectetur ham. Eiusmod biltong cupim ad doner voluptate.</p>
+          </div>
+
+          <div class="col s12 recipe-content-ingredients">
+            <h3>Ingredients</h3>
+
+            <p>Pastrami, tenderloin, tri-tip in, ground round sed landjaeger, commodo, Proident pork loin bresaola labore, Ea bresaola ribeye rump, pork, ham, consectetur ham. Eiusmod biltong.</p>
+          </div>
+
+
+          <div class="col s12 recipe-content-method">
+            <h3>Method</h3>
+
+            <p>Spicy jalapeno bacon ipsum dolor amet in anim est short ribs beef ribs eu. Ball tip deserunt ut, consequat strip steak chuck voluptate. Enim buffalo short ribs veniam. Pork loin dolor cupidatat velit pancetta. Exercitation meatloaf est, buffalo
+              venison eiusmod andouille mollit tri-tip bresaola sed pork chop pork sunt pig. Jerky aute est do sunt. Pork belly nulla tempor alcatra, rump doner laboris jowl id pork loin in ham hock aute cupidatat. Buffalo shoulder in ea pork belly. Duis
+              ut ad rump picanha. Picanha enim shoulder, hamburger id excepteur strip steak swine aliqua. Jowl ea shankle pork chop ribeye ground round cillum est leberkas short loin sirloin adipisicing eiusmod. Turkey rump eiusmod officia pork belly.
+              Swine eiusmod magna meatball deserunt ribeye strip steak pork loin dolore adipisicing voluptate. Ullamco labore sint incididunt anim tail lorem dolor. Occaecat pork belly qui, shank ball tip chuck nisi nostrud aliqua. Nostrud irure aliquip,
+              ut beef ribs filet mignon leberkas.
+            </p>
+          </div>
+
+          <div class="hide-on-med-and-up">
+            <div class="col s12 center-align like-box light-blue lighten-3">
+              <h4>Like What You See?</h4>
+              <p>Give this recipe the Golden Oven Mitt Seal Of Approval</p>
+              <a href="" class="btn-large waves-effect amber accent-4 blue-grey-text text-darken-4 modal-trigger"><img src="{{ url_for('static', filename='img/mitt.png') }}"> +1</a>
+            </div>
+
+            <div class="col s12 edit-link">
+              <p>Found A Mistake? <a href="{{ url_for('edit_recipe') }}">Edit Recipe</a></p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 {% endblock %}

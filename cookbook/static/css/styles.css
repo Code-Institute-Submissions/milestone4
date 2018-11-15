@@ -52,6 +52,11 @@
     background-color: #eeeeee;
   }
   
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
   
   /*SEARCH MODAL*/
   .modal.bottom-sheet {
@@ -251,15 +256,18 @@
 
 
   /*CALL TO ACTION BARS UNDER HEROS*/
-
+  /*cta at bottom of page*/
   .cta {
     margin-bottom: 72px;
   }
 
+  /*CTA BAR*/
   .cta-bar {
     margin: 0;
     padding: 16px 0;
     box-shadow: 0 1px 7px #424242;
+    position: relative;
+    z-index: 2;
   }
 
   .cta-bar .row {
@@ -312,3 +320,84 @@
   .add-edit-form {
     margin-top: 56px;
   }
+  
+  /*RECIPE ENTRY*/
+  .recipe-wrapper {
+    margin-bottom: 0;
+  }
+  
+  /*Side Bar*/
+  .row .col.side-bar {
+    padding: 0;
+  }
+  
+  .mitt {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    padding-top: 12px;
+    padding-left: 6px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    font-weight: 600;
+  }
+  
+  .recipe-wrapper .mitt img {
+    height: 30px;
+    width: auto;
+  }
+  
+  .vegan-bar h4 {
+    margin-top: 0;
+    padding: 20px 0;
+  }
+  
+  .side-info {
+    margin-top: 30px;
+  }
+  
+  .side-info li{
+    margin-bottom: 12px;
+  }
+  
+  .allergen-info {
+    margin-top: 36px;
+  }
+  
+  .allergens {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .allergens li {
+    font-weight: 600;
+    padding: 10px 16px;
+  }
+  
+  .like-box {
+    margin-top: 72px;
+    margin-bottom: 36px;
+  }
+  
+  .like-box a {
+    margin-bottom: 20px;
+  }
+  
+  .like-box a img {
+    top: 8px;
+  }
+  
+  .edit-link {
+    margin-bottom: 36px;
+  }
+  
+  /*Recipe Content*/
+  .recipe-content {
+    margin-top: 56px;
+  }
+
+  
+  
