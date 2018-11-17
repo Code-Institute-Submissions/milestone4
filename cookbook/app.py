@@ -1,7 +1,12 @@
 import os
+import db_config
 from flask import Flask, render_template
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
+
+app.config["MONGO_DBNAME"] = db_config.database_name
+app.config["MONGO_URI"] = db_config.database_uri
 
 @app.route('/')
 def home():
