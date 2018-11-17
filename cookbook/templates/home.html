@@ -49,86 +49,88 @@
     </div>
 
     <div class="row">
+      
+      {% for recipe in recipes %}
       <div class="col s12 m6 l4">
         <div class="box z-depth-3">
 
           <div class="title valign-wrapper amber accent-2">
-            <h4>Recipe Title<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</span></h4>
+            <h4>{{ recipe.recipe_title }}<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> {{ recipe.oven_mitt_score }}</span></h4>
           </div>
 
           <div class="info valign-wrapper center-align">
-            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>50min</span></span>
-            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br>50min</span></span>
-            <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>4</span></span>
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>{{ recipe.prep_time }}min</span></span>
+            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br>{{ recipe.cook_time }}min</span></span>
+            <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>{{ recipe.recipe_serves }}</span></span>
           </div>
 
           <div class="description">
             <hr>
-            <p class="heat orange-text text-darken-4">Heat Rating - <span class="flame"><i class="fas fa-fire"></i> <i class="fas fa-fire"></i> <i class="fas fa-fire"></i></span></p>
+            <p class="heat orange-text text-darken-4">Heat Rating -
+            <!-- This will display the heat rating as flame icons. I used a conditional if statement to determine how it would show -->
+            <!-- As there are only five different states I went with this method. If there were hundreds for example, I would have to come up with another way of doing the same thing.  -->
+            <!-- I would probably use a loop that takes the number and outputs that many red flames -->
+            {% if recipe.heat_rating == "1" %}
+            <span class="flame">
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "2" %}
+            <span class="flame">
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "3" %}
+            <span class="flame">
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "4" %}
+            <span class="flame">
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "5" %}
+            <span class="flame">
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+              <i class="fas fa-fire"></i>
+            </span>
+            {% endif %}
+            </p>
             <hr>
-            <p class="desc-body">Spicy jalapeno porchetta bresaola brisket beef ribs chicken pork loin. Exercitation turkey pancetta picanha. Velit t-bone ham cow pork belly.</p>
-            <a class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
+            <!-- For a better user experience I have truncated the description to 200 characters, -->
+            <!--this give the user a good understanding of what the recipe involves without making the recipe cards text heavy -->
+            <p class="desc-body">{{ recipe.recipe_description | truncate(200) }}</p>
+            <a href="{{ url_for('view_recipe') }}" class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
           </div>
 
           <div class="bottom">
+            <!-- This is a great first indicator to the user wether the recipe will contain allergens or not. -->
+            <!-- They can now go into the recipe knowing to look out for a potential hazard -->
+            {% if recipe.main_allergens or recipe.other_allergens %}
             <p class="allergen center-align red darken-1 white-text">! Contains Allergens !</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s12 m6 l4">
-        <div class="box z-depth-3">
-
-          <div class="title valign-wrapper amber accent-2">
-            <h4>This is going to be 70 characters long I hop it works out ok. It no...<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</span></h4>
-          </div>
-
-          <div class="info valign-wrapper center-align">
-            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>50min</span></span>
-            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br>50min</span></span>
-            <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>4</span></span>
-          </div>
-
-          <div class="description">
-            <hr>
-            <p class="heat orange-text text-darken-4">Heat Rating - <span class="flame"><i class="fas fa-fire"></i> <i class="fas fa-fire"></i> <i class="fas fa-fire"></i></span></p>
-            <hr>
-            <p class="desc-body">Spicy jalapeno porchetta bresaola brisket beef ribs chicken pork loin. Exercitation turkey pancetta picanha. Velit t-bone ham cow pork belly.</p>
-            <a class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
-          </div>
-
-          <div class="bottom">
+            {% else %}
             <p class="allergen center-align green darken-1 white-text">No Allergens</p>
+            {% endif %}
           </div>
         </div>
       </div>
-
-      <div class="col s12 m6 l4">
-        <div class="box z-depth-3">
-
-          <div class="title valign-wrapper amber accent-2">
-            <h4>Recipe Title<span class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</span></h4>
-          </div>
-
-          <div class="info valign-wrapper center-align">
-            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>50min</span></span>
-            <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br> 1hr 50min</span></span>
-            <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>4</span></span>
-          </div>
-
-          <div class="description">
-            <hr>
-            <p class="heat orange-text text-darken-4">Heat Rating - <span class="flame"><i class="fas fa-fire"></i> <i class="fas fa-fire"></i> <i class="fas fa-fire"></i></span></p>
-            <hr>
-            <p class="desc-body">Spicy jalapeno porchetta bresaola brisket beef ribs chicken pork loin. Exercitation turkey pancetta picanha. Velit t-bone ham cow pork belly.</p>
-            <a class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
-          </div>
-
-          <div class="bottom">
-            <p class="allergen center-align red darken-1 white-text">! Contains Allergens !</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
 
     </div>
   </div>
