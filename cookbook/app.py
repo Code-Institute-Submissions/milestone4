@@ -8,13 +8,22 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = db_config.database_name
 app.config["MONGO_URI"] = db_config.database_uri
 
+mongo = PyMongo(app)
+
+
+# The homepage will render home.html template
+# I decided to show the top three recipes by oven mitt score
+# This lets the user, not only see the top three recipes, but also familiarises
+# them with how the recipe cards are laid out.
 @app.route('/')
 def home():
-  return render_template('home.html')
+  recipes = mongo.db.recipes.find()
+  return render_template('home.html', recipes=recipes)
   
 @app.route('/recipes')
 def recipes():
-  return render_template('recipes/results.html')
+  recipes = mongo.db.recipes.find()
+  return render_template('recipes/results.html', recipes=recipes)
   
 @app.route('/recipes/entry')
 def view_recipe():
