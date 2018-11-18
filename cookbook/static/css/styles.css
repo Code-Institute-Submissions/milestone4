@@ -333,8 +333,8 @@
   
   .mitt {
     height: 65px;
-    width: 65px;
-    border-radius: 50%;
+    width: 80px;
+    border-radius: 5%;
     padding-top: 12px;
     padding-left: 6px;
     background-color: #fff;
@@ -375,6 +375,10 @@
   .allergens li {
     font-weight: 600;
     padding: 10px 16px;
+  }
+  
+  .other-allergens {
+    font-weight: 600;
   }
   
   .like-box {

@@ -4,27 +4,71 @@
   <div class="row flex recipe-wrapper">
 
     <div class="col s12 m5 l4 xl3 side-bar grey lighten-5">
+      {% if recipe.vegan_suitable == "1" %}
       <div class="vegan-bar center-align green lighten-3">
         <h4><span><i class="fas fa-leaf"></i></span>&nbsp;&nbsp;Suitable For Vegans</h4>
       </div>
+      {% endif %}
       
       <div class="col s12 center-align">
-        <p class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> 20</p>
+        <p class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> {{ recipe.oven_mitt_score }}</p>
       </div>
 
       <div class="col s12">
         <ul class="side-info">
-          <li><span class="icon"><i class="fas fa-user fa-fw"></i></span> <strong>Submitted By: </strong> Philsurgenor87</li>
-          <li><span class="icon"><i class="far fa-check-square fa-fw"></i></span> <strong>Main Ingredient: </strong> Chicken</li>
-          <li><span class="icon"><i class="fas fa-fire fa-fw"></i></span> <strong>Heat Rating: </strong> jhghg</li>
+          <li><span class="icon"><i class="fas fa-user fa-fw"></i></span> <strong>Submitted By: </strong> {{ recipe.submitted_by }}</li>
+          <li><span class="icon"><i class="far fa-check-square fa-fw"></i></span> <strong>Main Ingredient: </strong> {{ recipe.main_ingredient }}</li>
+          <li><span class="icon"><i class="fas fa-fire fa-fw"></i></span> <strong>Heat Rating: </strong>
+            {% if recipe.heat_rating == "1" %}
+            <span class="flame ">
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "2" %}
+            <span class="flame">
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "3" %}
+            <span class="flame">
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire grey-text"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "4" %}
+            <span class="flame">
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire grey-text"></i>
+            </span>
+            {% elif recipe.heat_rating == "5" %}
+            <span class="flame">
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+              <i class="fas fa-fire orange-text text-darken-4"></i>
+            </span>
+            {% endif %}
+          </li>
         </ul>
       </div>
 
       <div class="col s12">
         <ul class="side-info">
-          <li><span class="icon"><i class="fas fa-users fa-fw"></i></span> <strong>Serves: </strong> 4</li>
-          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Prep Time: </strong> 15min</li>
-          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Cook Time: </strong> 50min</li>
+          <li><span class="icon"><i class="fas fa-users fa-fw"></i></span> <strong>Serves: </strong> {{ recipe.recipe_serves }}</li>
+          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Prep Time: </strong> {{ recipe.prep_time }}min</li>
+          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Cook Time: </strong> {{ recipe.cook_time }}min</li>
         </ul>
       </div>
 
@@ -32,13 +76,13 @@
         <p><span><i class="fas fa-exclamation-triangle fa-fw"></i></span> <strong>Allergens</strong> <span><i class="fas fa-exclamation-triangle fa-fw"></i></span></p>
 
         <ul class="allergens">
-          <li>Nuts</li>
-          <li>Milk</li>
-          <li>Gluten ddj</li>
-          <li>Gluten dd df</li>
-          <li>Gluten d</li>
-          <li>Gluten</li>
+          {% for allergen in recipe.main_allergens %}
+          <li>{{ allergen }}</li>
+          {% endfor %}
         </ul>
+        
+        <p><strong>Other Allergens:</strong></p>
+        <p class="other-allergens">{{ recipe.other_allergens }}</p>
       </div>
 
       <div class="hide-on-small-only">
@@ -60,32 +104,26 @@
       <div class="container">
         <div class="row">
           <div class="col s12">
-            <h2>Recipe Title</h2>
+            <h2>{{ recipe.recipe_title }}</h2>
           </div>
 
           <div class="col s12 recipe-content-description">
             <h3>Description</h3>
 
-            <p>Pastrami tenderloin tri-tip in, nisi jowl eiusmod corned beef ground round sed landjaeger commodo. Proident pork loin bresaola labore. Ea bresaola ribeye rump tempor doner dolore pork chop reprehenderit frankfurter. Picanha bresaola spare
-              ribs chuck burgdoggen, in leberkas voluptate esse prosciutto. Ground round beef ribs pork belly ham hock chuck, consectetur ham. Eiusmod biltong cupim ad doner voluptate.</p>
+            <p>{{ recipe.recipe_description }}</p>
           </div>
 
           <div class="col s12 recipe-content-ingredients">
             <h3>Ingredients</h3>
 
-            <p>Pastrami, tenderloin, tri-tip in, ground round sed landjaeger, commodo, Proident pork loin bresaola labore, Ea bresaola ribeye rump, pork, ham, consectetur ham. Eiusmod biltong.</p>
+            <p>{{ recipe.recipe_ingredients }}</p>
           </div>
 
 
           <div class="col s12 recipe-content-method">
             <h3>Method</h3>
 
-            <p>Spicy jalapeno bacon ipsum dolor amet in anim est short ribs beef ribs eu. Ball tip deserunt ut, consequat strip steak chuck voluptate. Enim buffalo short ribs veniam. Pork loin dolor cupidatat velit pancetta. Exercitation meatloaf est, buffalo
-              venison eiusmod andouille mollit tri-tip bresaola sed pork chop pork sunt pig. Jerky aute est do sunt. Pork belly nulla tempor alcatra, rump doner laboris jowl id pork loin in ham hock aute cupidatat. Buffalo shoulder in ea pork belly. Duis
-              ut ad rump picanha. Picanha enim shoulder, hamburger id excepteur strip steak swine aliqua. Jowl ea shankle pork chop ribeye ground round cillum est leberkas short loin sirloin adipisicing eiusmod. Turkey rump eiusmod officia pork belly.
-              Swine eiusmod magna meatball deserunt ribeye strip steak pork loin dolore adipisicing voluptate. Ullamco labore sint incididunt anim tail lorem dolor. Occaecat pork belly qui, shank ball tip chuck nisi nostrud aliqua. Nostrud irure aliquip,
-              ut beef ribs filet mignon leberkas.
-            </p>
+            <p>{{ recipe.recipe_method }}</p>
           </div>
 
           <div class="hide-on-med-and-up">

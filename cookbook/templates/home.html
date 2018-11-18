@@ -116,7 +116,7 @@
             <!-- For a better user experience I have truncated the description to 200 characters, -->
             <!--this give the user a good understanding of what the recipe involves without making the recipe cards text heavy -->
             <p class="desc-body">{{ recipe.recipe_description | truncate(200) }}</p>
-            <a href="{{ url_for('view_recipe') }}" class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
+            <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="btn waves-effect light-blue darken-2 white-text">View Recipe <i class="material-icons right">arrow_right_alt</i></a>
           </div>
 
           <div class="bottom">
