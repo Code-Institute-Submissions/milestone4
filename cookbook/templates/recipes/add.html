@@ -3,10 +3,10 @@
   <div class="container">
     <div class="row">
       <div class="col s12 m6 l4">
-        <form action="" method="POST" class="col s12">
+        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
           <div class="row">
             <div class="col s12 input-field">
-              <input id="username" name="username" type="text" class="validate" required>
+              <input id="username" name="submitted_by" type="text" class="validate" required>
               <label for="username">Username*</label>
               <span class="helper-text" data-error="Username Required" data-success="">Required</span>
             </div>
@@ -24,7 +24,7 @@
             </div>
 
             <div class="col s12 input-field">
-              <input id="people_serves" name="people_serves" type="number" class="validate" required>
+              <input id="people_serves" name="recipe_serves" type="number" class="validate" required>
               <label for="people_serves">Dish Serves* <small>(Number)</small></label>
               <span class="helper-text" data-error="Please tell us how many people the dish will serve" data-success=""></span>
             </div>
@@ -50,13 +50,13 @@
             </div>
 
             <div class="input-field col s12">
-              <textarea id="ingredients" name="ingredients" class="materialize-textarea validate" required></textarea>
+              <textarea id="ingredients" name="recipe_ingredients" class="materialize-textarea validate" required></textarea>
               <label for="ingredients">Ingredients*</label>
               <span class="helper-text" data-error="Please Enter Ingredients" data-success="">Enter Ingredients and Quantities</span>
             </div>
 
             <div class="input-field col s12">
-              <textarea id="method" name="method" class="materialize-textarea validate" required></textarea>
+              <textarea id="method" name="recipe_method" class="materialize-textarea validate" required></textarea>
               <label for="method">Method*</label>
               <span class="helper-text" data-error="Please Enter method" data-success=""></span>
             </div>
