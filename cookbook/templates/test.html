@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 center-align">
+            {% for title in titles %}
+            <p>{{ title.recipe_title }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
