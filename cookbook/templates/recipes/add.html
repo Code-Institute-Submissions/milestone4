@@ -2,8 +2,8 @@
 <section class="add-edit-form">
   <div class="container">
     <div class="row">
-      <div class="col s12 m6 l4">
-        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
+      <div class="col s12 m8 l6">
+        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12" id="add_form">
           <div class="row">
             <div class="col s12 input-field">
               <input id="username" name="submitted_by" type="text" class="validate" required>
@@ -14,7 +14,7 @@
             <div class="col s12 input-field">
               <input id="recipe_title" name="recipe_title" type="text" class="validate" data-length="70" required>
               <label for="recipe_title">Recipe Title*</label>
-              <span class="helper-text" data-error="Recipe Title Required" data-success=""></span>
+              <span class="helper-text" data-error="Recipe Title Required" data-success="" data-exists=""></span>
             </div>
 
             <div class="input-field col s12">
@@ -143,7 +143,7 @@
           
           <div class="row">
             <div class="col s12 center-align">
-              <button class="btn-large waves-effect green accent-2 blue-grey-text text-darken-4" type="submit" name="action">Add Recipe</button>
+              <button id="submit" class="btn-large waves-effect green accent-2 blue-grey-text text-darken-4" type="submit" name="action">Add Recipe</button>
             </div>
           </div>
         </form>
@@ -151,4 +151,47 @@
     </div><!-- row -->
   </div><!-- container -->
 </section>
+
+{% endblock %}
+
+{% block additional_scripts %}
+
+<!-- This script will first place all the recipe titles into an array.
+It will then listen for a change on the recipe title input field.
+If the recipe title (in lower case) matches the users input (inlower case),
+it will let the user know by showing an error under the field.
+
+This method brings the data in at page load, which although works,
+would need to be improved as the site gets more hits.
+I think Ajax could be used to pull the data in as it is being typed.-->
+<script>
+  $(document).ready(function() {
+    var json_titles = {{ titles | safe }};
+    var titles = [];
+    for (i in json_titles) {
+      var example = json_titles[i];
+
+      for (var key in example) {
+        titles.push(example[key].toLowerCase());
+      }
+    }
+
+    console.log(titles);
+
+    $("#recipe_title").on("keyup", function() {
+      console.log($(this).val());
+      if (titles.includes($(this).val().toLowerCase())) {
+        $("#recipe_title").addClass("already-exists");
+        $("#recipe_title").nextAll('span:first').attr('data-exists','This Title Already Exists').addClass("already-exists");
+        console.log("Found it");
+        $("#submit").attr('disabled', 'disabled');
+      } else {
+        $("#recipe_title").removeClass("already-exists");
+        $("#recipe_title").nextAll('span:first').attr('data-exists','').removeClass("already-exists");
+        $("#submit").removeAttr('disabled');
+      }
+      console.log("Changed!!!");
+    });
+  });
+</script>
 {% endblock %}
