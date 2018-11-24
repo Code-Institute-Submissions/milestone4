@@ -24,28 +24,28 @@
             </div>
 
             <div class="col s12 input-field">
-              <input id="people_serves" name="recipe_serves" type="number" class="validate" required>
+              <input id="people_serves" name="recipe_serves" type="number" class="validate" required min="0">
               <label for="people_serves">Dish Serves* <small>(Number)</small></label>
               <span class="helper-text" data-error="Please tell us how many people the dish will serve" data-success=""></span>
             </div>
 
             <div class="col s6 input-field">
-              <input id="prep_time_hr" name="prep_time_hr" type="number" class="validate" required value="0">
+              <input id="prep_time_hr" name="prep_time_hr" type="number" class="validate" required value="0" min="0">
               <label for="prep_time_hr">Prep Time <small>(hr)</small></label>
             </div>
 
             <div class="col s6 input-field">
-              <input id="prep_time_min" name="prep_time_min" type="number" class="validate" required value="0">
+              <input id="prep_time_min" name="prep_time_min" type="number" class="validate" required value="0" min="0" max="59">
               <label for="prep_time_min">Prep Time <small>(min)</small></label>
             </div>
 
             <div class="col s6 input-field">
-              <input id="cook_time_hr" name="cook_time_hr" type="number" class="validate" required value="0">
+              <input id="cook_time_hr" name="cook_time_hr" type="number" class="validate" required value="0" min="0">
               <label for="cook_time_hr">Cook Time <small>(hr)</small></label>
             </div>
 
             <div class="col s6 input-field">
-              <input id="cook_time_min" name="cook_time_min" type="number" class="validate" required value="0">
+              <input id="cook_time_min" name="cook_time_min" type="number" class="validate" required value="0" min="0" max="59">
               <label for="cook_time_min">Cook Time <small>(min)</small></label>
             </div>
 
@@ -81,41 +81,16 @@
             <div class="col s12">
               <p class="additional-label">Contains Allergens:</p>
 
+              {% for allergen in allergens %}
               <div class="col sm6">
                 <p>
-                  <label for="allergen1">
-                  <input type="checkbox" id="allergen1" name="allergen1" />
-                  <span>Nuts</span>
+                  <label for="allergen{{ loop.index }}">
+                  <input type="checkbox" id="allergen{{ loop.index }}" name="allergen{{ loop.index }}" value="{{ allergen.main_allergen_name }}" />
+                  <span>{{ allergen.main_allergen_name }}</span>
                   </label>
                 </p>
               </div>
-
-              <div class="col sm6">
-                <p>
-                  <label for="allergen2">
-                  <input type="checkbox" id="allergen2" name="allergen2" />
-                  <span>Nuts</span>
-                </label>
-                </p>
-              </div>
-
-              <div class="col sm6">
-                <p>
-                  <label for="allergen3">
-                  <input type="checkbox" id="allergen3" name="allergen3" />
-                  <span>Nuts</span>
-                </label>
-                </p>
-              </div>
-
-              <div class="col sm6">
-                <p>
-                  <label for="allergen4">
-                  <input type="checkbox" id="allergen4" name="allergen4" />
-                  <span>Nuts</span>
-               </label>
-                </p>
-              </div>
+              {% endfor %}
 
             </div>
 

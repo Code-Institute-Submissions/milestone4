@@ -19,6 +19,14 @@ mongo = PyMongo(app)
 def get_recipe_titles():
   titles = dumps(mongo.db.recipes.find({}, {"_id": 0, "recipe_title": 1}))
   return titles
+  
+# Check Main Ingredients and Add if Needed
+def check_main_ingredients(x):
+  ingredient = x.lower() 
+  if mongo.db.main_ingredients.find({"main_ingredient_name": ingredient}).count() == 0:
+    mongo.db.main_ingredients.insert_one({"main_ingredient_name": ingredient})
+
+
 
 
 # The homepage will render home.html template
@@ -46,15 +54,16 @@ def view_recipe(recipe_id):
 
 # The recipe title must be unique, this will stop confusion and help with the search.
 # It also means there is something to tell two recipes apart even if they are for the same dish.
+# This happens on the client side.
 @app.route('/add-recipe')
 def add_recipe():
   titles = get_recipe_titles()
-  return render_template('recipes/add.html', titles=titles)
+  allergens = mongo.db.allergens.find()
+  return render_template('recipes/add.html', titles=titles, allergens=allergens)
 
 # For the prep time and cook time, I couldn't just have a text input as ther are many ways to add time
 # For example some users might just insert minutes, while others might use hours and minutes
 # So that there is no confusion they will have to insert hours and minutes.
-# I will insert the time as minutes in the collection.
 
 # I have added a field called 'main ingedient'. The will help with search and data visualisation
 # Before Adding it to the collection I will check the main_ingredients collection to see if it is unique
@@ -69,14 +78,18 @@ def add_recipe():
 # This will help with the overall User experience.
 @app.route('/insert-recipe', methods=["POST"])
 def insert_recipe():
-  # form_results = request.form.to_dict()
-  # form_results["recipe_title"] = "new title"
-  # element = form_results
+  form_results = request.form.to_dict()
+  check_main_ingredients(form_results["main_ingredient"])
+
   
-  # recipes = mongo.db.recipes
-  # this_id = recipes.insert_one(request.form.to_dict())
+  
+  form_results["recipe_title"] = "new title"
+  element = form_results
+  
+  recipes = mongo.db.recipes
+  recipes.insert_one(request.form.to_dict())
   # recipe_id = this_id.inserted_id
-  return render_template('test.html')
+  return render_template('test.html', element=element)
   # return redirect(url_for('view_recipe', recipe_id=recipe_id ))
   
 @app.route('/edit')
