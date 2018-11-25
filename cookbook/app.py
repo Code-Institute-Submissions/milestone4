@@ -101,9 +101,12 @@ def insert_recipe():
   recipe_id = this_id.inserted_id
   return redirect(url_for('view_recipe', recipe_id=recipe_id))
   
-@app.route('/edit')
-def edit_recipe():
-  return render_template('recipes/edit.html')
+@app.route('/edit/<recipe_id>')
+def edit_recipe(recipe_id):
+  recipe_entry = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+  titles = get_recipe_titles()
+  allergens = mongo.db.allergens.find()
+  return render_template('recipes/edit.html', recipe=recipe_entry, titles=titles, allergens=allergens)
   
   
 @app.route('/stats')
