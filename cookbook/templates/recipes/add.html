@@ -85,7 +85,7 @@
               <div class="col sm6">
                 <p>
                   <label for="allergen{{ loop.index }}">
-                  <input type="checkbox" id="allergen{{ loop.index }}" name="allergen{{ loop.index }}" value="{{ allergen.main_allergen_name }}" />
+                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="{{ allergen.main_allergen_name }}" />
                   <span>{{ allergen.main_allergen_name }}</span>
                   </label>
                 </p>
@@ -118,7 +118,7 @@
           
           <div class="row">
             <div class="col s12 center-align">
-              <button id="submit" class="btn-large waves-effect green accent-2 blue-grey-text text-darken-4" type="submit" name="action">Add Recipe</button>
+              <button id="submit" class="btn-large waves-effect green accent-2 blue-grey-text text-darken-4" type="submit">Add Recipe</button>
             </div>
           </div>
         </form>

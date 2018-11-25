@@ -11,7 +11,7 @@
       {% endif %}
       
       <div class="col s12 center-align">
-        <p class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> {{ recipe.oven_mitt_score }}</p>
+        <p class="mitt"><i><img src="{{ url_for('static', filename='img/mitt-g.png') }}"></i> {% if recipe.oven_mitt_score %} {{ recipe.oven_mitt_score }} {% else %} 0 {% endif %}</p>
       </div>
 
       <div class="col s12">
@@ -67,8 +67,22 @@
       <div class="col s12">
         <ul class="side-info">
           <li><span class="icon"><i class="fas fa-users fa-fw"></i></span> <strong>Serves: </strong> {{ recipe.recipe_serves }}</li>
-          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Prep Time: </strong> {{ recipe.prep_time }}min</li>
-          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Cook Time: </strong> {{ recipe.cook_time }}min</li>
+          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Prep Time: </strong>
+          {% if recipe.prep_time_hr != "0" %}
+          {{ recipe.prep_time_hr }}hr&nbsp;
+          {% endif %}
+          {% if recipe.prep_time_min != "0" %}
+          {{ recipe.prep_time_min }}min
+          {% endif %}
+          </li>
+          <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Cook Time: </strong>
+          {% if recipe.cook_time_hr != "0" %}
+          {{ recipe.cook_time_hr }}hr&nbsp;
+          {% endif %}
+          {% if recipe.cook_time_min != "0" %}
+          {{ recipe.cook_time_min }}min
+          {% endif %}
+          </li>
         </ul>
       </div>
 

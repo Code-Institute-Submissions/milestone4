@@ -25,6 +25,20 @@ def check_main_ingredients(x):
   ingredient = x.lower() 
   if mongo.db.main_ingredients.find({"main_ingredient_name": ingredient}).count() == 0:
     mongo.db.main_ingredients.insert_one({"main_ingredient_name": ingredient})
+    
+# Allergens will be made into an array and stored in collection as main_allergens
+# This will make it easier to display on frontend
+def make_allergen_array(form_results):
+  db_allergen_list = mongo.db.allergens.find({}, {"_id": 0, "main_allergen_name": 1})
+  main_allergen_list = []
+  for a in db_allergen_list:
+    allergen = str(a["main_allergen_name"])
+    if allergen in form_results:
+      main_allergen_list.append(allergen)
+      
+  return main_allergen_list
+  
+
 
 
 
@@ -80,17 +94,12 @@ def add_recipe():
 def insert_recipe():
   form_results = request.form.to_dict()
   check_main_ingredients(form_results["main_ingredient"])
-
-  
-  
-  form_results["recipe_title"] = "new title"
-  element = form_results
-  
+  main_allergen_array = make_allergen_array(form_results)
+  form_results["main_allergens"] = main_allergen_array
   recipes = mongo.db.recipes
-  recipes.insert_one(request.form.to_dict())
-  # recipe_id = this_id.inserted_id
-  return render_template('test.html', element=element)
-  # return redirect(url_for('view_recipe', recipe_id=recipe_id ))
+  this_id = recipes.insert_one(form_results)
+  recipe_id = this_id.inserted_id
+  return redirect(url_for('view_recipe', recipe_id=recipe_id))
   
 @app.route('/edit')
 def edit_recipe():
