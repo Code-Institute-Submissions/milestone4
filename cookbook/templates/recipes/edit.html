@@ -148,11 +148,15 @@ it will let the user know by showing an error under the field.
 
 This method brings the data in at page load, which although works,
 would need to be improved as the site gets more hits.
-I think Ajax could be used to pull the data in as it is being typed.-->
+I think Ajax could be used to pull the data in as it is being typed.
+
+For this script I have added and and case to the if statement to allow for editing the title 
+and putting it back to the original -->
 <script>
   $(document).ready(function() {
     var json_titles = {{ titles | safe }};
     var titles = [];
+    var thisTitle = "{{ recipe.recipe_title | safe }}";
     for (i in json_titles) {
       var example = json_titles[i];
 
@@ -162,10 +166,11 @@ I think Ajax could be used to pull the data in as it is being typed.-->
     }
 
     console.log(titles);
+    console.log(thisTitle);
 
     $("#recipe_title").on("keyup", function() {
       console.log($(this).val());
-      if (titles.includes($(this).val().toLowerCase())) {
+      if (titles.includes($(this).val().toLowerCase()) && $(this).val().toLowerCase() != thisTitle.toLowerCase()) {
         $("#recipe_title").addClass("already-exists");
         $("#recipe_title").nextAll('span:first').attr('data-exists','This Title Already Exists').addClass("already-exists");
         console.log("Found it");
