@@ -109,6 +109,29 @@ def edit_recipe(recipe_id):
   return render_template('recipes/edit.html', recipe=recipe_entry, titles=titles, allergens=allergens)
   
   
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+  form_results = request.form.to_dict()
+  check_main_ingredients(form_results["main_ingredient"])
+  main_allergen_array = make_allergen_array(form_results)
+  form_results["main_allergens"] = main_allergen_array
+  
+  mongo.db.recipes.update(
+        {'_id': ObjectId(recipe_id)},
+        form_results
+        )
+  return redirect(url_for('view_recipe', recipe_id=recipe_id))
+  
+  
+@app.route('/plus_one_score/<recipe_id>')
+def plus_one_score(recipe_id):
+  recipe_entry = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+  score = int(recipe_entry["oven_mitt_score"])
+  score += 1
+  mongo.db.recipes.update({'_id': ObjectId(recipe_id)}, { '$set': { "oven_mitt_score": str(score) }})
+  return redirect(url_for('view_recipe', recipe_id=recipe_id))
+
+  
 @app.route('/stats')
 def view_stats():
   return render_template('stats.html')

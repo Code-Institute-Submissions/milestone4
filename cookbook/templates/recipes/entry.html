@@ -103,7 +103,7 @@
         <div class="col s12 center-align like-box light-blue lighten-3">
           <h4>Like What You See?</h4>
           <p>Give this recipe the Golden Oven Mitt Seal Of Approval</p>
-          <a href="" class="btn-large waves-effect amber accent-4 blue-grey-text text-darken-4 modal-trigger"><img src="{{ url_for('static', filename='img/mitt.png') }}"> +1</a>
+          <a href="{{ url_for('plus_one_score', recipe_id=recipe._id) }}" class="btn-large waves-effect amber accent-4 blue-grey-text text-darken-4 modal-trigger"><img src="{{ url_for('static', filename='img/mitt.png') }}"> +1</a>
         </div>
 
         <div class="col s12 edit-link">
@@ -144,7 +144,7 @@
             <div class="col s12 center-align like-box light-blue lighten-3">
               <h4>Like What You See?</h4>
               <p>Give this recipe the Golden Oven Mitt Seal Of Approval</p>
-              <a href="" class="btn-large waves-effect amber accent-4 blue-grey-text text-darken-4 modal-trigger"><img src="{{ url_for('static', filename='img/mitt.png') }}"> +1</a>
+              <a href="{{ url_for('plus_one_score', recipe_id=recipe._id) }}" class="btn-large waves-effect amber accent-4 blue-grey-text text-darken-4 modal-trigger"><img src="{{ url_for('static', filename='img/mitt.png') }}"> +1</a>
             </div>
 
             <div class="col s12 edit-link">
