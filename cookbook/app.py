@@ -12,8 +12,9 @@ app.config["MONGO_URI"] = db_config.database_uri
 
 mongo = PyMongo(app)
 
-
-# HELPER FUNCTIONS
+####################
+# HELPER FUNCTIONS #
+####################
 
 #Get Recipe Titles
 def get_recipe_titles():
@@ -38,7 +39,7 @@ def make_allergen_array(form_results):
       
   return main_allergen_list
   
-
+###############################################################################
 
 
 
@@ -50,7 +51,8 @@ def make_allergen_array(form_results):
 @app.route('/')
 def home():
   recipes = mongo.db.recipes.find()
-  return render_template('home.html', recipes=recipes)
+  titles=get_recipe_titles()
+  return render_template('home.html', recipes=recipes, titles=titles)
   
 @app.route('/recipes')
 def recipes():
@@ -100,7 +102,8 @@ def insert_recipe():
   this_id = recipes.insert_one(form_results)
   recipe_id = this_id.inserted_id
   return redirect(url_for('view_recipe', recipe_id=recipe_id))
-  
+
+# The two function below render the edit recipe page and update the recipe in the database 
 @app.route('/edit/<recipe_id>')
 def edit_recipe(recipe_id):
   recipe_entry = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -122,7 +125,11 @@ def update_recipe(recipe_id):
         )
   return redirect(url_for('view_recipe', recipe_id=recipe_id))
   
-  
+
+# For the liking / upvoting system I decided to use oven mitts to fi the theme
+# If the app had authentication I would limit the number of upvotes a user could give a recipe to one
+# This would stop them repeatedly hiting the like button. I would also make it that they couldn't
+# upvote their own recipe.
 @app.route('/plus_one_score/<recipe_id>')
 def plus_one_score(recipe_id):
   recipe_entry = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -131,7 +138,11 @@ def plus_one_score(recipe_id):
   mongo.db.recipes.update({'_id': ObjectId(recipe_id)}, { '$set': { "oven_mitt_score": str(score) }})
   return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
-  
+
+@app.route('/search', methods=["POST"])
+def search():
+  return redirect(url_for('recipes'))
+ 
 @app.route('/stats')
 def view_stats():
   return render_template('stats.html')

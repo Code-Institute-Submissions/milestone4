@@ -69,3 +69,41 @@
 </section>
 
 {% endblock %}
+
+
+{% block additional_scripts %}
+
+<script>
+  
+  var json_titles = {{ titles | safe }};
+    
+    console.log(json_titles);
+    var titles = [];
+    for (i in json_titles) {
+      var x = json_titles[i];
+
+      for (var key in x) {
+        titles.push(x[key]);
+      }
+    }
+    console.log(titles);
+    
+    titles_json = {};
+    
+    for ( i in titles ) {
+      titles_json[titles[i]] = ""
+    }
+    
+    
+    
+    console.log(titles_json);
+    
+    $('input.autocomplete').autocomplete({
+      data: titles_json
+    });
+  
+</script>
+
+{% endblock %}
+
+
