@@ -4,36 +4,93 @@
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <a href="#search-modal" class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4 modal-trigger"><i class="material-icons left">search</i>Search</a>
+        <form action="{{ url_for('search_title') }}" method="POST" class="col s12">
+
+          <div class="col s12 m6 l4 input-field">
+            <input id="search_word" name="search_word" type="text" class="autocomplete" autocomplete="off">
+            <label for="search_word">Search Recipe Names</label>
+          </div>
+          
+          <div class="col s12 m6 l6 input-field">
+          <button class="btn waves-effect amber accent-2 blue-grey-text text-darken-4" type="submit" name="action">View Results</button>
+          
+          <a href="{{ url_for('recipes') }}"  class="btn modal-close waves-effect  btn-flat"><small>Clear Search</small></a>
+          </div>
+          
+          <div class="col s12">
+          <a class="modal-trigger" href="#search-modal">advanced search</a>
+          </div>
+          
+        </form>
       </div>
     </div>
   </div>
 </section>
 
+<br>
+<br>
 
 <section class="recipe-results">
   <div class="container">
-    <div class="row">
-      <div class="col s12 m3 offset-m9">
-        <select>
-          <option value="" disabled selected>Sort By:</option>
-          <option value="1">A - Z</option>
-          <option value="2">Most Popular</option>
-          <option value="3">Shortest Cook Time</option>
-        </select>
-      </div>
-    </div>
 
-
-    <br>
-    <br>
-
-    <div class="row">
-     {% for recipe in recipes %}
-        {% include "_includes/recipe-card.html" %}
-      {% endfor %}
+    <div class="row" id="recipe_cards">
+      {% for recipe in recipes | sort(attribute='recipe_title') %} {% include "_includes/recipe-card.html" %} {% endfor %}
     </div>
   </div>
 </section>
+
+{% endblock %}
+
+{% block additional_scripts %}
+
+<script>
+  // This script is for the autocomplete input
+  
+  /* 
+  
+  It works by taking the data from the database 
+  pushing the recipe names into an array, and then 
+  adding the names to a clean json object.
+  
+  By doing this it cleans the json so that the auto complete 
+  function can read it properly.
+  
+  I had to add this script to all the templates with the search modal.
+  I tried putting it in the search modal template itself but the '$' was
+  being used before it was declared in jquery.js.
+  
+  I also tried putting it into the main.js file, but I wasn't able to pass in the
+  json variable using jinja.
+     
+  */
+  var json_titles = {{ titles | safe }};
+    
+    console.log(json_titles);
+    var titles = [];
+    for (i in json_titles) {
+      var x = json_titles[i];
+
+      for (var key in x) {
+        titles.push(x[key]);
+      }
+    }
+    console.log(titles);
+    
+    titles_json = {};
+    
+    for ( i in titles ) {
+      titles_json[titles[i]] = ""
+    }
+    
+    
+    
+    console.log(titles_json);
+    
+    $('input.autocomplete').autocomplete({
+      data: titles_json
+    });
+
+  
+</script>
 
 {% endblock %}

@@ -2,6 +2,7 @@ import os
 import db_config
 from flask import Flask, render_template, request, redirect, url_for
 from flask_pymongo import PyMongo
+import pymongo
 from bson.objectid import ObjectId
 from bson.json_util import dumps
 
@@ -51,13 +52,15 @@ def make_allergen_array(form_results):
 @app.route('/')
 def home():
   recipes = mongo.db.recipes.find()
-  titles=get_recipe_titles()
-  return render_template('home.html', recipes=recipes, titles=titles)
+  return render_template('home.html', recipes=recipes)
   
 @app.route('/recipes')
 def recipes():
   recipes = mongo.db.recipes.find()
-  return render_template('recipes/results.html', recipes=recipes)
+  titles=get_recipe_titles()
+  allergens = mongo.db.allergens.find()
+  main_ingredients = mongo.db.main_ingredients.find()
+  return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients)
   
 @app.route('/recipes/<recipe_id>')
 def view_recipe(recipe_id):
@@ -139,9 +142,29 @@ def plus_one_score(recipe_id):
   return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
 
-@app.route('/search', methods=["POST"])
-def search():
-  return redirect(url_for('recipes'))
+
+###################
+# SEARCH SECTION #
+##################
+
+# There are two search functions
+# The first is to search for the recipe title
+# The second is an advanced search, that filters out results
+# To search for a recipe title, I created an index in mongodb
+# This lets me search within the recipe_title strng
+@app.route('/search_results', methods=["POST"])
+def search_title():
+  search_word = request.form.get("search_word")
+  mongo.db.recipes.create_index([("recipe_title", pymongo.TEXT)])
+  recipes = mongo.db.recipes.find({'$text': {'$search': search_word }})
+  titles=get_recipe_titles()
+  allergens = mongo.db.allergens.find()
+  main_ingredients = mongo.db.main_ingredients.find()
+  return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients)
+  
+
+
+###############################################################################
  
 @app.route('/stats')
 def view_stats():

@@ -325,6 +325,10 @@
     margin-top: 72px;
   }
   
+  .search-btn .input-field {
+    margin-bottom: 12px;
+  }
+  
   /*Results Section*/
   .recipe-results {
     margin-bottom: 72px;

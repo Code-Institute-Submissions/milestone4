@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col s12 center">
             <div class="col s12 m6 l6 xl4 offset-xl2">
-              <a href="#search-modal" class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4 modal-trigger"><i class="material-icons left">search</i>Find A Recipe</a>
+              <a href="{{ url_for('recipes') }}" class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4 modal-trigger"><i class="material-icons left">search</i>Find A Recipe</a>
             </div>
 
 
@@ -69,41 +69,3 @@
 </section>
 
 {% endblock %}
-
-
-{% block additional_scripts %}
-
-<script>
-  
-  var json_titles = {{ titles | safe }};
-    
-    console.log(json_titles);
-    var titles = [];
-    for (i in json_titles) {
-      var x = json_titles[i];
-
-      for (var key in x) {
-        titles.push(x[key]);
-      }
-    }
-    console.log(titles);
-    
-    titles_json = {};
-    
-    for ( i in titles ) {
-      titles_json[titles[i]] = ""
-    }
-    
-    
-    
-    console.log(titles_json);
-    
-    $('input.autocomplete').autocomplete({
-      data: titles_json
-    });
-  
-</script>
-
-{% endblock %}
-
-

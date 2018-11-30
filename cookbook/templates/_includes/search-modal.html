@@ -6,18 +6,14 @@
       <div class="row">
         <div class="col s12">
           <h4>Search</h4>
-          <p class="search-info">Use the search box and filters to find a meal to suit your needs</p>
+          <p class="search-info">Use the filters below to refine your search</p>
         </div>
       </div>
 
 
       <div class="row">
-        <form action="" method="POST" class="col s12">
+        <form action="{{ url_for('search_title') }}" method="POST" class="col s12">
           <div class="row">
-            <div class="col s12 m6 l4 input-field">
-              <input id="search_word" name="search_word" type="text" class="autocomplete">
-              <label for="search_word">Search Recipes</label>
-            </div>
 
             <div class="col s12 m6 l4 input-field">
               <select id="serves" name="serves" class="validate">
@@ -44,60 +40,32 @@
             <div class="col s12 m6 l4 input-field">
               <select id="main_ingredient" name="main_ingredient">
                 <option value=""  selected>Select Ingredient</option>
-                <option value="chicken">Chicken</option>
-                <option value="beef">Beef</option>
-                <option value="fish">Fish</option>
-                <option value="pork">Pork</option>
-                <option value="lamb">Lamb</option>
-                <option value="veal">Veal</option>
+                {% for ingredient in main_ingredients %}
+                  <option value="{{ingredient.main_ingredient_name}}">{{ ingredient.main_ingredient_name }}</option>
+                {% endfor %}
               </select>
               <label for="main_ingredient">Main Ingredient</label>
             </div>
 
-            <div class="col s12 m6 l4">
+            <div class="col s12">
               <p class="additional-label">Does Not Contain:</p>
 
-              <div class="col sm6">
+              {% for allergen in allergens %}
+              <div class="col s6 m4 l3">
                 <p>
-                  <label for="allergen1" >
-                  <input type="checkbox" id="allergen1" name="allergen1" />
-                  <span>Nuts</span>
+                  <label for="allergen{{ loop.index }}">
+                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="{{ allergen.main_allergen_name }}" />
+                  <span>{{ allergen.main_allergen_name }}</span>
                   </label>
                 </p>
               </div>
-
-              <div class="col sm6">
-                <p>
-                  <label for="allergen2">
-                  <input type="checkbox" id="allergen2" name="allergen2" />
-                  <span>Nuts</span>
-                </label>
-                </p>
-              </div>
-
-              <div class="col sm6">
-                <p>
-                  <label for="allergen3">
-                  <input type="checkbox" id="allergen3" name="allergen3" />
-                  <span>Nuts</span>
-                </label>
-                </p>
-              </div>
-
-              <div class="col sm6">
-                <p>
-                  <label for="allergen4">
-                  <input type="checkbox" id="allergen4" name="allergen4" />
-                  <span>Nuts</span>
-               </label>
-                </p>
-              </div>
-
+              {% endfor %}
             </div>
 
-
-            <div class="col s12 m6 l4">
+            <div class="col s12 m6">
               <!-- Switch -->
+              <br>
+              <br>
               <div class="switch">
                 <label>
                   <p class="additional-label">Vegan Friendly</p>
@@ -115,7 +83,7 @@
             <div class="col s12 center-align">
               <button class="btn-large waves-effect amber accent-2 blue-grey-text text-darken-4" type="submit" name="action">View Results</button>
               
-              <a href="#!" class="btn-large modal-close waves-effect  btn-flat">Cancel</a>
+              <a  class="btn-large modal-close waves-effect  btn-flat">Cancel</a>
             </div>
           </div>
         </form>
@@ -124,5 +92,3 @@
     </div>
   </div>
 </div>
-
-
