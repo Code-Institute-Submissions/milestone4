@@ -6,7 +6,7 @@
       <div class="col s12">
         <form action="{{ url_for('search_title') }}" method="POST" class="col s12">
 
-          <div class="col s12 m6 l4 input-field">
+          <div class="col s12 m6 l6 input-field">
             <input id="search_word" name="search_word" type="text" class="autocomplete" autocomplete="off">
             <label for="search_word">Search Recipe Names</label>
           </div>
@@ -30,11 +30,23 @@
 <br>
 <br>
 
+<section class="recipe-count">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <p>Recipes Found: <strong>{{ count }}</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="recipe-results">
   <div class="container">
 
     <div class="row" id="recipe_cards">
-      {% for recipe in recipes | sort(attribute='recipe_title') %} {% include "_includes/recipe-card.html" %} {% endfor %}
+      {% for recipe in recipes | sort(attribute='oven_mitt_score', reverse=True) %}
+      {% include "_includes/recipe-card.html" %}
+      {% endfor %}
     </div>
   </div>
 </section>

@@ -50,8 +50,10 @@
 
     <div class="row">
       
-      {% for recipe in recipes %}
+      {% for recipe in recipes | sort(attribute='oven_mitt_score', reverse=True)%}
+      {% if loop.index <= 3 %}
         {% include "_includes/recipe-card.html" %}
+      {% endif %}
       {% endfor %}
 
     </div>

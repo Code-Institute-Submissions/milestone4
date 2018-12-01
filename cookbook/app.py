@@ -60,7 +60,8 @@ def recipes():
   titles=get_recipe_titles()
   allergens = mongo.db.allergens.find()
   main_ingredients = mongo.db.main_ingredients.find()
-  return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients)
+  count = recipes.count()
+  return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients, count=count)
   
 @app.route('/recipes/<recipe_id>')
 def view_recipe(recipe_id):
@@ -101,6 +102,14 @@ def insert_recipe():
   check_main_ingredients(form_results["main_ingredient"])
   main_allergen_array = make_allergen_array(form_results)
   form_results["main_allergens"] = main_allergen_array
+  form_results["heat_rating"] = int(form_results["heat_rating"])
+  form_results["recipe_serves"] = int(form_results["recipe_serves"])
+  form_results["prep_time_hr"] = int(form_results["prep_time_hr"])
+  form_results["prep_time_min"] = int(form_results["prep_time_min"])
+  form_results["cook_time_hr"] = int(form_results["cook_time_hr"])
+  form_results["cook_time_min"] = int(form_results["cook_time_min"])
+  form_results["oven_mitt_score"] = int(form_results["oven_mitt_score"])
+  
   recipes = mongo.db.recipes
   this_id = recipes.insert_one(form_results)
   recipe_id = this_id.inserted_id
@@ -121,6 +130,13 @@ def update_recipe(recipe_id):
   check_main_ingredients(form_results["main_ingredient"])
   main_allergen_array = make_allergen_array(form_results)
   form_results["main_allergens"] = main_allergen_array
+  form_results["heat_rating"] = int(form_results["heat_rating"])
+  form_results["recipe_serves"] = int(form_results["recipe_serves"])
+  form_results["prep_time_hr"] = int(form_results["prep_time_hr"])
+  form_results["prep_time_min"] = int(form_results["prep_time_min"])
+  form_results["cook_time_hr"] = int(form_results["cook_time_hr"])
+  form_results["cook_time_min"] = int(form_results["cook_time_min"])
+  form_results["oven_mitt_score"] = int(form_results["oven_mitt_score"])
   
   mongo.db.recipes.update(
         {'_id': ObjectId(recipe_id)},
@@ -136,9 +152,9 @@ def update_recipe(recipe_id):
 @app.route('/plus_one_score/<recipe_id>')
 def plus_one_score(recipe_id):
   recipe_entry = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-  score = int(recipe_entry["oven_mitt_score"])
+  score = recipe_entry["oven_mitt_score"]
   score += 1
-  mongo.db.recipes.update({'_id': ObjectId(recipe_id)}, { '$set': { "oven_mitt_score": str(score) }})
+  mongo.db.recipes.update({'_id': ObjectId(recipe_id)}, { '$set': { "oven_mitt_score": score }})
   return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
 
@@ -160,9 +176,12 @@ def search_title():
   titles=get_recipe_titles()
   allergens = mongo.db.allergens.find()
   main_ingredients = mongo.db.main_ingredients.find()
-  return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients)
+  count = recipes.count()
+  return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients, count=count)
   
-
+@app.route('/advanced_search_results', methods=["POST"])
+def advanced_search():
+  return render_template('recipes/results.html')
 
 ###############################################################################
  
