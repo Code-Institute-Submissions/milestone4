@@ -22,12 +22,18 @@
               <label for="recipe_description">Description*</label>
               <span class="helper-text" data-error="Description Required" data-success=""></span>
             </div>
-
+            
             <div class="col s12 input-field">
-              <input id="people_serves" name="recipe_serves" type="number" class="validate" required min="0" value="{{ recipe.recipe_serves }}">
-              <label for="people_serves">Dish Serves* <small>(Number)</small></label>
-              <span class="helper-text" data-error="Please tell us how many people the dish will serve" data-success=""></span>
+              <select id="people_serves" name="recipe_serves" class="validate">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="7">6 +</option>
+              </select>
+              <label for="people_serves">Dish Serves <small>(people)</small></label>
             </div>
+
 
             <div class="col s6 input-field">
               <input id="prep_time_hr" name="prep_time_hr" type="number" class="validate" required value="{{ recipe.prep_time_hr }}" min="0">
@@ -64,7 +70,7 @@
             <div class="col s12 input-field">
               <select id="heat_rating" name="heat_rating">
                 {% for i in range(1,6) %}
-                {% if i|string == recipe.heat_rating %}
+                {% if i == recipe.heat_rating %}
                 <option  value="{{ i }}" selected>{{ i }}{% if i == 1 %} - Very Mild{% elif i == 5 %} - Extremely Hot{% endif %}</option>
                 {% else %}
                 <option  value="{{ i }}">{{ i }}{% if i == 1 %} - Very Mild{% elif i == 5 %} - Extremely Hot{% endif %}</option>

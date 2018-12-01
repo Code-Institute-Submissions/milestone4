@@ -22,7 +22,9 @@
         {{ recipe.cook_time_min }}min
         {% endif %}
       </span></span>
-      <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>{{ recipe.recipe_serves }}</span></span>
+      <span><i class="material-icons icon">people</i>&nbsp;&nbsp;<span class="info-text">Serves<br>
+      {% if recipe.recipe_serves == 7 %}6+{% else %}{{ recipe.recipe_serves }}{% endif %}
+      </span></span>
     </div>
 
     <div class="description">

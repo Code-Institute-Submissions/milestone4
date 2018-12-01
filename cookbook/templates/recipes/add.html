@@ -24,9 +24,14 @@
             </div>
 
             <div class="col s12 input-field">
-              <input id="people_serves" name="recipe_serves" type="number" class="validate" required min="0">
-              <label for="people_serves">Dish Serves* <small>(Number)</small></label>
-              <span class="helper-text" data-error="Please tell us how many people the dish will serve" data-success=""></span>
+              <select id="people_serves" name="recipe_serves" class="validate">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="7">6 +</option>
+              </select>
+              <label for="people_serves">Dish Serves <small>(people)</small></label>
             </div>
 
             <div class="col s6 input-field">
