@@ -7,18 +7,18 @@
 
     <div class="info valign-wrapper center-align">
       <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Prep<br>
-        {% if recipe.prep_time_hr != "0" %}
+        {% if recipe.prep_time_hr != 0 %}
         {{ recipe.prep_time_hr }}hr&nbsp;
         {% endif %}
-        {% if recipe.prep_time_min != "0" %}
+        {% if recipe.prep_time_min != 0 %}
         {{ recipe.prep_time_min }}min
         {% endif %}
       </span></span>
       <span><i class="material-icons icon">schedule</i>&nbsp;&nbsp;<span class="info-text">Cook<br>
-        {% if recipe.cook_time_hr != "0" %}
+        {% if recipe.cook_time_hr != 0 %}
         {{ recipe.cook_time_hr }}hr&nbsp;
         {% endif %}
-        {% if recipe.cook_time_min != "0" %}
+        {% if recipe.cook_time_min != 0 %}
         {{ recipe.cook_time_min }}min
         {% endif %}
       </span></span>
@@ -31,35 +31,35 @@
         <!-- This will display the heat rating as flame icons. I used a conditional if statement to determine how it would show -->
         <!-- As there are only five different states I went with this method. If there were hundreds for example, I would have to come up with another way of doing the same thing.  -->
         <!-- I would probably use a loop that takes the number and outputs that many red flames -->
-        {% if recipe.heat_rating == "1" %}
+        {% if recipe.heat_rating == 1 %}
         <span class="flame">
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
-            </span> {% elif recipe.heat_rating == "2" %}
+            </span> {% elif recipe.heat_rating == 2 %}
         <span class="flame">
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
-            </span> {% elif recipe.heat_rating == "3" %}
+            </span> {% elif recipe.heat_rating == 3 %}
         <span class="flame">
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
-            </span> {% elif recipe.heat_rating == "4" %}
+            </span> {% elif recipe.heat_rating == 4 %}
         <span class="flame">
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire grey-text"></i>
-            </span> {% elif recipe.heat_rating == "5" %}
+            </span> {% elif recipe.heat_rating == 5 %}
         <span class="flame">
               <i class="fas fa-fire"></i>
               <i class="fas fa-fire"></i>

@@ -19,7 +19,7 @@
           <li><span class="icon"><i class="fas fa-user fa-fw"></i></span> <strong>Submitted By: </strong> {{ recipe.submitted_by }}</li>
           <li><span class="icon"><i class="far fa-check-square fa-fw"></i></span> <strong>Main Ingredient: </strong> {{ recipe.main_ingredient }}</li>
           <li><span class="icon"><i class="fas fa-fire fa-fw"></i></span> <strong>Heat Rating: </strong>
-            {% if recipe.heat_rating == "1" %}
+            {% if recipe.heat_rating == 1 %}
             <span class="flame ">
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire grey-text"></i>
@@ -27,7 +27,7 @@
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
             </span>
-            {% elif recipe.heat_rating == "2" %}
+            {% elif recipe.heat_rating == 2 %}
             <span class="flame">
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
@@ -35,7 +35,7 @@
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
             </span>
-            {% elif recipe.heat_rating == "3" %}
+            {% elif recipe.heat_rating == 3 %}
             <span class="flame">
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
@@ -43,7 +43,7 @@
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
             </span>
-            {% elif recipe.heat_rating == "4" %}
+            {% elif recipe.heat_rating == 4 %}
             <span class="flame">
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
@@ -51,7 +51,7 @@
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire grey-text"></i>
             </span>
-            {% elif recipe.heat_rating == "5" %}
+            {% elif recipe.heat_rating == 5 %}
             <span class="flame">
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
@@ -68,18 +68,18 @@
         <ul class="side-info">
           <li><span class="icon"><i class="fas fa-users fa-fw"></i></span> <strong>Serves: </strong> {{ recipe.recipe_serves }}</li>
           <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Prep Time: </strong>
-          {% if recipe.prep_time_hr != "0" %}
+          {% if recipe.prep_time_hr !=0 %}
           {{ recipe.prep_time_hr }}hr&nbsp;
           {% endif %}
-          {% if recipe.prep_time_min != "0" %}
+          {% if recipe.prep_time_min != 0 %}
           {{ recipe.prep_time_min }}min
           {% endif %}
           </li>
           <li><span class="icon"><i class="far fa-clock fa-fw"></i></span> <strong>Cook Time: </strong>
-          {% if recipe.cook_time_hr != "0" %}
+          {% if recipe.cook_time_hr != 0 %}
           {{ recipe.cook_time_hr }}hr&nbsp;
           {% endif %}
-          {% if recipe.cook_time_min != "0" %}
+          {% if recipe.cook_time_min != 0 %}
           {{ recipe.cook_time_min }}min
           {% endif %}
           </li>
