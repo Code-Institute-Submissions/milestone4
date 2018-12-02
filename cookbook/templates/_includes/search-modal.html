@@ -16,8 +16,8 @@
           <div class="row">
 
             <div class="col s12 m6 l4 input-field">
-              <select id="serves" name="serves" class="validate">
-                <option value=""  selected>Select Number</option>
+              <select id="serves" name="recipe_serves" class="validate">
+                <option value="0"  selected>Select Number</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -28,19 +28,19 @@
             </div>
 
             <div class="col s12 m6 l4 input-field">
-              <select id="cook_time" name="cook_time">
-                <option value=""  selected>Select Time</option>
-                <option value="lessOne">< 1hr</option>
-                <option value="lessTwo">< 2hr</option>
-                <option value="lessThree">< 3hr</option>
-                <option value="threePlus">3hr +</option>
+              <select id="cook_time" name="cook_time_hr">
+                <option value="5"  selected>Select Time</option>
+                <option value="0">< 1hr</option>
+                <option value="1">< 2hr</option>
+                <option value="2">< 3hr</option>
+                <option value="3">3hr +</option>
               </select>
               <label for="cook_time">Cook Time</label>
             </div>
 
             <div class="col s12 m6 l4 input-field">
               <select id="main_ingredient" name="main_ingredient">
-                <option value=""  selected>Select Ingredient</option>
+                <option value="0"  selected>Select Ingredient</option>
                 {% for ingredient in main_ingredients %}
                   <option value="{{ingredient.main_ingredient_name}}">{{ ingredient.main_ingredient_name }}</option>
                 {% endfor %}
@@ -51,20 +51,19 @@
             <div class="col s12">
               <p class="additional-label">Does Not Contain:</p>
 
-              {% for allergen in allergens %}
-              <div class="col s6 m4 l3">
-                <p>
-                  <label for="allergen{{ loop.index }}">
-                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="{{ allergen.main_allergen_name }}" />
-                  <span>{{ allergen.main_allergen_name }}</span>
-                  </label>
-                </p>
-              </div>
-              {% endfor %}
-            </div>
+            <!--  {% for allergen in allergens %}-->
+            <!--  <div class="col s6 m4 l3">-->
+            <!--    <p>-->
+            <!--      <label for="allergen{{ loop.index }}">-->
+            <!--      <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="{{ allergen.main_allergen_name }}" />-->
+            <!--      <span>{{ allergen.main_allergen_name }}</span>-->
+            <!--      </label>-->
+            <!--    </p>-->
+            <!--  </div>-->
+            <!--  {% endfor %}-->
+            <!--</div>-->
 
             <div class="col s12 m6">
-              <!-- Switch -->
               <br>
               <br>
               <div class="switch">

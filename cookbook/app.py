@@ -35,10 +35,38 @@ def make_allergen_array(form_results):
   main_allergen_list = []
   for a in db_allergen_list:
     allergen = str(a["main_allergen_name"])
-    if allergen in form_results:
+    if form_results[allergen] == "yes":
       main_allergen_list.append(allergen)
       
   return main_allergen_list
+  
+  
+def add_cook_times(x):
+  if x["cook_time_hr"] == "0":
+    x["cook_below_one"] = "yes"
+    x["cook_below_two"] = "yes"
+    x["cook_below_three"] = "yes"
+    x["cook_over_three"] = "no"
+    return x
+  elif x["cook_time_hr"] == "1":
+    x["cook_below_one"] = "no"
+    x["cook_below_two"] = "yes"
+    x["cook_below_three"] = "yes"
+    x["cook_over_three"] = "no"
+    return x
+  elif x["cook_time_hr"] == "2":
+    x["cook_below_one"] = "no"
+    x["cook_below_two"] = "no"
+    x["cook_below_three"] = "yes"
+    x["cook_over_three"] = "no"
+    return x
+  else:
+    x["cook_below_one"] = "no"
+    x["cook_below_two"] = "no"
+    x["cook_below_three"] = "no"
+    x["cook_over_three"] = "yes"
+    return x
+    
   
 ###############################################################################
 
@@ -101,7 +129,9 @@ def insert_recipe():
   form_results = request.form.to_dict()
   check_main_ingredients(form_results["main_ingredient"])
   main_allergen_array = make_allergen_array(form_results)
+  form_results = add_cook_times(form_results)
   form_results["main_allergens"] = main_allergen_array
+  form_results["main_ingredient"] = form_results["main_ingredient"].lower()
   form_results["heat_rating"] = int(form_results["heat_rating"])
   form_results["recipe_serves"] = int(form_results["recipe_serves"])
   form_results["prep_time_hr"] = int(form_results["prep_time_hr"])
@@ -129,7 +159,9 @@ def update_recipe(recipe_id):
   form_results = request.form.to_dict()
   check_main_ingredients(form_results["main_ingredient"])
   main_allergen_array = make_allergen_array(form_results)
+  form_results = add_cook_times(form_results)
   form_results["main_allergens"] = main_allergen_array
+  form_results["main_ingredient"] = form_results["main_ingredient"].lower()
   form_results["heat_rating"] = int(form_results["heat_rating"])
   form_results["recipe_serves"] = int(form_results["recipe_serves"])
   form_results["prep_time_hr"] = int(form_results["prep_time_hr"])
@@ -181,12 +213,46 @@ def search_title():
   
 @app.route('/advanced_search_results', methods=["POST"])
 def advanced_search():
-  return render_template('recipes/results.html')
+  form_results = request.form.to_dict()
+  form_results["recipe_serves"] = int(form_results["recipe_serves"])
+  serves = form_results["recipe_serves"]
+  cook_time = form_results["cook_time_hr"]
+  ingredient = form_results["main_ingredient"]
+  
+  del form_results["action"]
+
+  
+  if serves == 0:
+    del form_results["recipe_serves"]
+    
+  if cook_time == "0":
+    form_results["cook_below_one"] = "yes"
+  elif cook_time == "1":
+    form_results["cook_below_two"] = "yes"
+  elif cook_time == "2":
+    form_results["cook_below_three"] = "yes"
+  elif cook_time == "3":
+    form_results["cook_over_three"] = "yes"
+    
+  del form_results["cook_time_hr"]
+  
+  if ingredient == "0":
+    del form_results["main_ingredient"]
+    
+    
+  
+  recipes = mongo.db.recipes.find(form_results)
+  titles=get_recipe_titles()
+  allergens = mongo.db.allergens.find()
+  main_ingredients = mongo.db.main_ingredients.find()
+  count = recipes.count()
+  return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients, count=count, results=form_results)
 
 ###############################################################################
  
 @app.route('/stats')
 def view_stats():
+  
   return render_template('stats.html')
 
     
