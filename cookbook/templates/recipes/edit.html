@@ -94,9 +94,9 @@
                 <p>
                   <label for="allergen{{ loop.index }}">
                   {% if allergen.main_allergen_name in recipe.main_allergens %}
-                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="{{ allergen.main_allergen_name }}" checked/>
+                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}"  class="allergen-cb" value="yes" checked/>
                   {% else %}
-                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="{{ allergen.main_allergen_name }}"  />
+                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}"  class="allergen-cb" value="yes"  />
                   {% endif %}
                   <span>{{ allergen.main_allergen_name }}</span>
                   </label>
@@ -190,6 +190,19 @@ and putting it back to the original -->
       }
       console.log("Changed!!!");
     });
+    
+    
+    $("#add_form").submit(function() {
+      $("#add_form").find($(".allergen-cb")).each(function() {
+        if( !$(this).is(":checked")) {
+          $(this).prop('checked', true);
+          $(this).attr('value', "no");
+        }
+        
+      });
+    });
+    
+    
   });
 </script>
 {% endblock %}

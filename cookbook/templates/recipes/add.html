@@ -88,7 +88,7 @@
               <div class="col s6">
                 <p>
                   <label for="allergen{{ loop.index }}">
-                  <input type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="{{ allergen.main_allergen_name }}" />
+                  <input class="allergen-cb" type="checkbox" id="allergen{{ loop.index }}" name="{{ allergen.main_allergen_name }}" value="yes" />
                   <span>{{ allergen.main_allergen_name }}</span>
                   </label>
                 </p>
@@ -172,6 +172,18 @@ I think Ajax could be used to pull the data in as it is being typed.-->
       }
       console.log("Changed!!!");
     });
+    
+    
+    $("#add_form").submit(function() {
+      $("#add_form").find($(".allergen-cb")).each(function() {
+        if( !$(this).is(":checked")) {
+          $(this).prop('checked', true);
+          $(this).attr('value', "no");
+        }
+        
+      });
+    });
+    
   });
 </script>
 {% endblock %}
