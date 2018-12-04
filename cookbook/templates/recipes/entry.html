@@ -6,7 +6,7 @@
     <div class="col s12 m5 l4 xl3 side-bar grey lighten-5">
       {% if recipe.vegan == "on" %}
       <div class="vegan-bar center-align green lighten-3">
-        <h4><span><i class="fas fa-leaf"></i></span>&nbsp;&nbsp;Suitable For Vegans</h4>
+        <h4><span><i class="fas fa-leaf"></i></span>&nbsp;&nbsp;Suitable For Vegetarians</h4>
       </div>
       {% endif %}
       
@@ -21,7 +21,6 @@
           <li><span class="icon"><i class="fas fa-fire fa-fw"></i></span> <strong>Heat Rating: </strong>
             {% if recipe.heat_rating == 1 %}
             <span class="flame ">
-              <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
@@ -30,14 +29,12 @@
             {% elif recipe.heat_rating == 2 %}
             <span class="flame">
               <i class="fas fa-fire orange-text text-darken-4"></i>
-              <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
               <i class="fas fa-fire grey-text"></i>
             </span>
             {% elif recipe.heat_rating == 3 %}
             <span class="flame">
-              <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire grey-text"></i>
@@ -48,12 +45,10 @@
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
-              <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire grey-text"></i>
             </span>
             {% elif recipe.heat_rating == 5 %}
             <span class="flame">
-              <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>
               <i class="fas fa-fire orange-text text-darken-4"></i>

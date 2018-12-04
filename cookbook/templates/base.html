@@ -17,7 +17,12 @@
 <body>
   <header>
     <nav>
+      {% if "admin" in request.path %}
+      <div class="nav-wrapper blue-grey darken-2">
+      {% else %}
       <div class="nav-wrapper light-blue darken-2">
+      {% endif %}
+      
         <div class="container">
           <a href="/" class="brand-logo">FiCoEa
           <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -25,7 +30,7 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-            <li><a href="{{ url_for('view_stats') }}">View Stats</a></li>
+            <li><a href="{{ url_for('admin') }}">Admin</a></li>
           </ul>
         </div>
       </div>
@@ -35,7 +40,7 @@
       <li><a href="{{ url_for('home') }}">Home</a></li>
       <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
       <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-      <li><a href="{{ url_for('view_stats') }}">View Stats</a></li>
+      <li><a href="{{ url_for('admin') }}">Admin</a></li>
     </ul>
   </header>
 
@@ -44,8 +49,11 @@
     {% block content %} {% endblock %}
   </main>
 
-
+  {% if "admin" in request.path %}
+  <footer class="page-footer blue-grey darken-2">
+  {% else %}
   <footer class="page-footer light-blue darken-2">
+  {% endif %}
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -58,7 +66,7 @@
             <li><a class="grey-text text-lighten-3" href="{{ url_for('home') }}">Home</a></li>
             <li><a class="grey-text text-lighten-3" href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a class="grey-text text-lighten-3" href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-            <li><a class="grey-text text-lighten-3" href="{{ url_for('view_stats') }}">View Stats</a></li>
+            <li><a class="grey-text text-lighten-3" href="{{ url_for('admin') }}">Admin</a></li>
           </ul>
         </div>
       </div>
