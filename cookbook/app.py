@@ -254,6 +254,19 @@ def advanced_search():
 def admin():
   
   return render_template('admin.html')
+  
+ ##############################
+# DATA VISULAISATION SECTION #
+##############################
+
+# This function will bring in the live data from the database and produce a json data
+@app.route('/get_data')
+def get_data():
+  keys = {'main_ingredient': True, 'heat_rating': True, '_id': False}
+  
+  recipes = dumps(mongo.db.recipes.find(projection=keys))
+  
+  return recipes
 
     
     
