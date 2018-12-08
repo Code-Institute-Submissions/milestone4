@@ -12,6 +12,9 @@
             {% elif "add" in request.path %}
             {% set bar = "view" %}
             <h1>Add A Recipe</h1>
+            {% elif "entry" in request.path %}
+            {% set bar = "view" %}
+            <h1>Recipes</h1>
             {% else %}
             {% set bar = "add" %}
             <h1>Recipes</h1>
