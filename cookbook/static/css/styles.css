@@ -421,6 +421,14 @@
   .recipe-content {
     margin-top: 56px;
   }
+  
+  .recipe-content-method p {
+    white-space: pre-wrap;
+  }
+  
+  .recipe-content-ingredients p {
+    white-space: pre-wrap;
+  }
 
   
   
