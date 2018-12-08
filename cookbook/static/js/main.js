@@ -20,5 +20,10 @@
     
     $('input#recipe_title').characterCounter();
     
+    
+    $('.box .title').matchHeight();
+    $('.box .info').matchHeight();
+    $('.box .desc-body').matchHeight();
+    
   });
     
