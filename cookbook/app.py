@@ -91,7 +91,7 @@ def recipes():
   count = recipes.count()
   return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients, count=count)
   
-@app.route('/recipes/<recipe_id>')
+@app.route('/recipes/entry/<recipe_id>')
 def view_recipe(recipe_id):
   recipe_entry = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
   return render_template('recipes/entry.html', recipe=recipe_entry)
@@ -250,10 +250,10 @@ def advanced_search():
 
 ###############################################################################
  
-@app.route('/stats')
-def view_stats():
+@app.route('/admin')
+def admin():
   
-  return render_template('stats.html')
+  return render_template('admin.html')
 
     
     
