@@ -249,19 +249,31 @@ def advanced_search():
   return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients, count=count, results=form_results)
 
 ###############################################################################
- 
-@app.route('/admin')
-def admin():
-  
-  return render_template('admin.html')
-  
+
  ##############################
 # DATA VISULAISATION SECTION #
 ##############################
 
+# Along with charts, I will show some dataalong the left side on the frontend
+# This will include Total number of recipes, total number of vegetarian recipes
+# and the most popular recipe.
+@app.route('/admin')
+def admin():
+  recipes = mongo.db.recipes
+  vegetarian_recipes = recipes.find( { "vegan": "on" } ).count()
+  total_recipes = recipes.count()
+  top_recipe = recipes.find_one(sort=[("oven_mitt_score", -1)])
+  
+  return render_template('admin.html', total_recipes=total_recipes, vegetarian_recipes=vegetarian_recipes, top_recipe=top_recipe )
+  
+
+
 # This function will bring in the live data from the database and produce a json data
+# I have decided to show three charts using crossfilter.js, dc.js and d3.js
+# You can find the code for these charts in data.js
 @app.route('/get_data')
 def get_data():
+  # The Keys help to drill down into the data and only return the values that are needed
   keys = {'main_ingredient': True, 'heat_rating': True, 'cook_time_hr': True, '_id': False}
   
   recipes = dumps(mongo.db.recipes.find(projection=keys))

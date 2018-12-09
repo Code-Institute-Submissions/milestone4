@@ -15,7 +15,7 @@ function makeGraphs(error, recipeData) {
   
 }
 
-
+// This shows recipe by heat_rating
 function show_heat_rating(ndx) {
   var dim = ndx.dimension(dc.pluck('heat_rating'));
   var group = dim.group();
@@ -35,6 +35,7 @@ function show_heat_rating(ndx) {
 }
 
 
+// This show recipe by main ingredient
 function show_main_ingredients(ndx) {
   var dim = ndx.dimension(dc.pluck('main_ingredient'));
   var group = dim.group();
@@ -51,7 +52,7 @@ function show_main_ingredients(ndx) {
 }
 
 
-
+//  Here I derived the data from the cook times to give a beter understanding of the data
 function show_cook_time(ndx) {
   var cook_dimension = ndx.dimension(function (d) {
     if (d.cook_time_hr >= 3)
@@ -65,8 +66,6 @@ function show_cook_time(ndx) {
     
   });
   var group = cook_dimension.group();
-  
-  console.log(group.all());
   
   dc.barChart("#cook_time")
       .width(500)
