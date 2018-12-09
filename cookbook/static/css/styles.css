@@ -431,4 +431,7 @@
   }
 
   
-  
+  /* Admin */
+  .recipe-content div.dc-chart {
+    float: none;
+  }

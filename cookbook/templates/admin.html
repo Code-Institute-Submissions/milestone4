@@ -3,7 +3,7 @@
 <section class="recipe">
   <div class="row flex recipe-wrapper">
 
-    <div class="col s12 m5 l4 xl3 side-bar blue-grey">
+    <div class="col s12 m12 l4 xl3 side-bar blue-grey">
       
       <div class="col s12 center-align white-text">
         <h3>Admin</h3>
@@ -13,11 +13,23 @@
 
 
 
-    <div class="col s12 m7 l8 xl9 recipe-content">
+    <div class="col s12 m12 l8 xl9 recipe-content">
       <div class="container">
         <div class="row">
-          <div class="col s12">
-            <p></p>
+          <div class="col s12 m12 l12 xl6 center-align">
+            <h4>Recipes by Heat Rating</h4>
+            <p>( 1 = No Heat, 5 = Extremely Spicy)</p>
+            <div id="heat_rating" class="center-align"></div>
+          </div>
+
+          <div class="col s12 m12 l12 xl6 center-align">
+            <h4>Recipes by Main Ingredients</h4>
+            <div id="main_ingredient"></div>
+          </div>
+          
+          <div class="col s12  center-align">
+            <h4>Recipes By Cook Times</h4>
+            <div id="cook_time"></div>
           </div>
         </div>
       </div>
@@ -26,5 +38,13 @@
   </div>
 </section>
 
+
+{% endblock %}
+
+
+
+{% block additional_scripts %}
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/data.js') }}"></script>
 
 {% endblock %}

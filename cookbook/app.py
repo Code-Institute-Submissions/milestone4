@@ -262,7 +262,7 @@ def admin():
 # This function will bring in the live data from the database and produce a json data
 @app.route('/get_data')
 def get_data():
-  keys = {'main_ingredient': True, 'heat_rating': True, '_id': False}
+  keys = {'main_ingredient': True, 'heat_rating': True, 'cook_time_hr': True, '_id': False}
   
   recipes = dumps(mongo.db.recipes.find(projection=keys))
   
