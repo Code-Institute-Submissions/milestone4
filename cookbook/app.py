@@ -260,11 +260,20 @@ def advanced_search():
 @app.route('/admin')
 def admin():
   recipes = mongo.db.recipes
+  
+  # finds all vegetarian recpes
   vegetarian_recipes = recipes.find( { "vegan": "on" } ).count()
+  
+  # Finds total number of recipes
   total_recipes = recipes.count()
+  
+  # Finds the most popular recipe by oven_mitt_score
   top_recipe = recipes.find_one(sort=[("oven_mitt_score", -1)])
   
-  return render_template('admin.html', total_recipes=total_recipes, vegetarian_recipes=vegetarian_recipes, top_recipe=top_recipe )
+  # Finds all Recipes
+  all_recipes = recipes.find()
+  
+  return render_template('admin.html', total_recipes=total_recipes, vegetarian_recipes=vegetarian_recipes, top_recipe=top_recipe, recipes=all_recipes )
   
 
 
@@ -279,9 +288,21 @@ def get_data():
   recipes = dumps(mongo.db.recipes.find(projection=keys))
   
   return recipes
+  
+
+###############################################################################  
 
     
-    
+ ###################
+# DELETE A RECIPE #
+###################
+
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+  mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+  return redirect(url_for('admin'))
+
+
 if __name__ == '__main__':
   app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),

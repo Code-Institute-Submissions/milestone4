@@ -14,6 +14,8 @@
       height: 300,
     });
     
+    $('.collapsible').collapsible();
+    
     $('select').formSelect();
     
     $('.modal').modal();

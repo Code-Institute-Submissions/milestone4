@@ -40,7 +40,8 @@
   }
 
 
-  a, button {
+  a,
+  button {
     font-weight: 600;
   }
 
@@ -51,19 +52,20 @@
     filter: brightness(80%);
     background-color: #eeeeee;
   }
-  
+
   .flex {
     display: flex;
     flex-wrap: wrap;
   }
-  
-  
+
+
   /*SEARCH MODAL*/
+
   .modal.bottom-sheet {
     background-color: #fff;
     max-height: 85%;
   }
-  
+
   .modal .modal-content {
     padding-top: 56px;
     margin-bottom: 36px;
@@ -71,17 +73,19 @@
 
 
   /*FORMS*/
+
   .input-field {
     margin-bottom: 36px;
   }
-  
+
   .additional-label {
     margin-top: 3px;
     font-size: .8rem;
     color: #9e9e9e;
   }
-  
+
   /*dropdown*/
+
   .select-wrapper input.select-dropdown:focus {
     border-bottom: solid 1px #0288d1;
     box-shadow: 0 1px 0 0 #0288d1;
@@ -95,49 +99,51 @@
     color: #424242;
     font-weight: 500;
   }
-  
+
   /*text input*/
+
   input[type=text]:not(.browser-default):focus:not([readonly]),
   input.valid[type=text]:not(.browser-default),
   input[type=number]:not(.browser-default):focus:not([readonly]),
   input.valid[type=number]:not(.browser-default),
-  textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus,
+  textarea.materialize-textarea.valid,
+  textarea.materialize-textarea.valid:focus,
   textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: solid 1px #0288d1;
     box-shadow: 0 1px 0 0 #0288d1;
   }
-  
+
   input[type=text]:not(.browser-default):focus:not([readonly])+label,
   input[type=number]:not(.browser-default):focus:not([readonly])+label,
-  textarea.materialize-textarea:focus.valid ~ label,
-  textarea.materialize-textarea:focus:not([readonly])+label{
+  textarea.materialize-textarea:focus.valid~label,
+  textarea.materialize-textarea:focus:not([readonly])+label {
     color: #0288d1;
   }
-  
+
   /*Checkboxes*/
+
   input[type="checkbox"]:checked+span:not(.lever):before {
     border-right-color: #0288d1;
     border-bottom-color: #0288d1;
   }
-  
+
   /*Switch*/
+
   .switch label input[type=checkbox]:checked+.lever {
     background-color: #64b5f6;
   }
-  
+
   .switch label input[type=checkbox]:checked+.lever:after {
     background-color: #0288d1;
   }
-  
+
   #recipe_title.already-exists {
     border-bottom: solid 1px #F44336!important;
     box-shadow: 0 1px 0 0 #F44336!important;
   }
-  
-  span.already-exists {
-    
-  }
-  
+
+  span.already-exists {}
+
   span.already-exists:after {
     content: attr(data-exists)!important;
     color: #F44336!important;
@@ -224,7 +230,7 @@
     border-radius: 5%;
     padding-top: 9px;
     padding-left: 6px;
-    background-color: rgba(255,255,255,0.68);
+    background-color: rgba(255, 255, 255, 0.68);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   }
 
@@ -271,12 +277,15 @@
 
 
   /*CALL TO ACTION BARS UNDER HEROS*/
+
   /*cta at bottom of page*/
+
   .cta {
     margin-bottom: 72px;
   }
 
   /*CTA BAR*/
+
   .cta-bar {
     margin: 0;
     padding: 16px 0;
@@ -321,35 +330,40 @@
   /*RECIPE RESULTS PAGE*/
 
   /*Search button section*/
+
   .search-btn {
     margin-top: 72px;
   }
-  
+
   .search-btn .input-field {
     margin-bottom: 12px;
   }
-  
+
   /*Results Section*/
+
   .recipe-results {
     margin-bottom: 72px;
   }
-  
-  
+
+
   /*ADD RECIPE PAGE*/
+
   .add-edit-form {
     margin-top: 56px;
   }
-  
+
   /*RECIPE ENTRY*/
+
   .recipe-wrapper {
     margin-bottom: 0;
   }
-  
+
   /*Side Bar*/
+
   .row .col.side-bar {
     padding: 0;
   }
-  
+
   .mitt {
     height: 65px;
     width: 80px;
@@ -361,77 +375,91 @@
     display: inline-block;
     font-weight: 600;
   }
-  
+
   .recipe-wrapper .mitt img {
     height: 30px;
     width: auto;
   }
-  
+
   .vegan-bar h4 {
     margin-top: 0;
     padding: 20px 0;
   }
-  
+
   .side-info {
     margin-top: 30px;
   }
-  
-  .side-info li{
+
+  .side-info li {
     margin-bottom: 12px;
   }
-  
+
   .allergen-info {
     margin-top: 36px;
   }
-  
+
   .allergens {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
   }
-  
+
   .allergens li {
     font-weight: 600;
     padding: 10px 16px;
   }
-  
+
   .other-allergens {
     font-weight: 600;
   }
-  
+
   .like-box {
     margin-top: 72px;
     margin-bottom: 36px;
   }
-  
+
   .like-box a {
     margin-bottom: 20px;
   }
-  
+
   .like-box a img {
     top: 8px;
   }
-  
+
   .edit-link {
     margin-bottom: 36px;
   }
-  
+
   /*Recipe Content*/
+
   .recipe-content {
     margin-top: 56px;
   }
-  
+
   .recipe-content-method p {
     white-space: pre-wrap;
   }
-  
+
   .recipe-content-ingredients p {
     white-space: pre-wrap;
   }
 
-  
+
   /* Admin */
+
   .recipe-content div.dc-chart {
     float: none;
   }
+
+
+  /* collapsible header  */
+  .collapsible-header i {
+    position: relative;
+    top: 9px;
+  }
+  
+  .modal .modal-footer {
+    text-align: center;
+  }
+  
