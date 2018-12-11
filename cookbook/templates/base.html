@@ -7,13 +7,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>FiCoEa - The World's Cookbook</title>
 
+  <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/dc.min.css') }}" type="text/css" />
   
+  <!-- FONTAWESOME ICON CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  
+  <!-- MATERIALIZE STYLES -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  
+  <!-- CUSTOM STYLE SHEET -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
+  
+  <!-- CSS and JS Files for DATA VISUALISATION -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/dc.min.css') }}" type="text/css" />
   <script type="text/javascript" src="{{ url_for('static', filename='js/lib/d3.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/lib/crossfilter.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/lib/dc.min.js') }}"></script>
@@ -88,9 +96,14 @@
   
   {% include "_includes/search-modal.html" %}
 
+  <!-- jQuery and Materialize js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+  <!-- MATCH HEIGHT LIBRARY -->
   <script src="{{ url_for('static', filename='js/lib/jquery.matchHeight.js') }}"></script>
+  
+  <!-- CUSTOM JS -->
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   
   {% block additional_scripts %} {% endblock %}
