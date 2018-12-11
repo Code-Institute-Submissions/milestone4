@@ -40,7 +40,8 @@ def make_allergen_array(form_results):
       
   return main_allergen_list
   
-  
+# Cook Times are added below as follows to allow for easy searching
+# The keys will be used i the advanced search function
 def add_cook_times(x):
   if x["cook_time_hr"] == "0":
     x["cook_below_one"] = "yes"
@@ -91,6 +92,7 @@ def recipes():
   count = recipes.count()
   return render_template('recipes/results.html', recipes=recipes, titles=titles, allergens=allergens, main_ingredients=main_ingredients, count=count)
   
+# Displays the selected recipe by ID
 @app.route('/recipes/entry/<recipe_id>')
 def view_recipe(recipe_id):
   recipe_entry = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -153,7 +155,10 @@ def edit_recipe(recipe_id):
   allergens = mongo.db.allergens.find()
   return render_template('recipes/edit.html', recipe=recipe_entry, titles=titles, allergens=allergens)
   
-  
+#  To allow for easy editing and maniplation of the data
+#  Any valuse that is a number is turned into an integer
+#  As the results comming from the form request are strings
+#  I had to convert them to integers
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
   form_results = request.form.to_dict()
